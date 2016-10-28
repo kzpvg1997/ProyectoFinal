@@ -45,7 +45,7 @@ public class BOEgresado {
 		if(eg!=null){
 			return eg;
 		}else{
-			throw new ExcepcionNegocio("Este egresado con cedula ''"+cedula+" (NO) existe");
+			throw new ExcepcionNegocio("Este egresado con cedula ''"+cedula+"'' (NO) existe");
 		}
 	}
 	

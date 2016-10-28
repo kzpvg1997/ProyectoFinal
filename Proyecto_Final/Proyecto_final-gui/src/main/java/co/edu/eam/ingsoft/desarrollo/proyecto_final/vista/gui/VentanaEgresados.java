@@ -131,7 +131,7 @@ public class VentanaEgresados extends javax.swing.JFrame {
 				    	jCalendarSalida.setDate(inf.getFechaSalida());
 					}
 					
-
+					
 				}
 				
 		}catch (Exception e) {
