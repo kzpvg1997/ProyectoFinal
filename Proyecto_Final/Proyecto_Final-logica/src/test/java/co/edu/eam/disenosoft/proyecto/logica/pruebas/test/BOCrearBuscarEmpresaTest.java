@@ -14,7 +14,7 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.Empresa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.SectorEmpresa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoEmpresaEnum;
 
-public class BOEmpresaTest {
+public class BOCrearBuscarEmpresaTest {
 
 	private BOEmpresa boEmpresa;
 	
@@ -32,7 +32,6 @@ public class BOEmpresaTest {
 	public void RegistrarEmpresa() throws Exception{
 		try{
 			Ciudad ciudad = boEmpresa.buscarCiudad(4);
-			//Departamento dep = boEmpresa.buscarDepartamento(5);
 			SectorEmpresa semp = boEmpresa.buscarSectorEmpresa(3);
 			
 			Empresa emp = new Empresa();
