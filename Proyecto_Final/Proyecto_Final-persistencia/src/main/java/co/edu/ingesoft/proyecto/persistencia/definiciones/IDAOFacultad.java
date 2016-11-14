@@ -22,4 +22,6 @@ public interface IDAOFacultad {
 	
 	public void registrarFacultad(Facultad facultad)throws Exception;
 	
+	public void editarFacultad (Facultad facultad)throws Exception;
+	
 }

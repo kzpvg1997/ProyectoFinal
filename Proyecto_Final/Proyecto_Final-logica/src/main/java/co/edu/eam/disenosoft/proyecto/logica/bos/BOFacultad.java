@@ -41,4 +41,15 @@ public class BOFacultad {
 			dao.registrarFacultad(facultad);
 		}
 	}
+	
+	public void editarFacultad(Facultad facultad) throws Exception {
+		
+		Facultad fac = dao.buscarFacultad(facultad.getIdFacultad());
+		
+		if(fac!=null){
+			dao.editarFacultad(facultad);
+		}else{
+			throw new ExecutionException("la facultad con este ID (NO) encuentra registrada");
+		}
+	}
 }

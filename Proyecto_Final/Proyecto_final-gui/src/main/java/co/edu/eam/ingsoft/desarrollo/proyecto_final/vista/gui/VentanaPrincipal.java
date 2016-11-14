@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+
 import co.edu.eam.disenosoft.proyecto.logica.excepciones.ExcepcionNegocio;
 import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorAreaInteres;
 import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorContacto;
@@ -102,7 +103,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jTFIdFacultad = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        jBEditarFacultad = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
         jPGestionPrograma = new javax.swing.JPanel();
         jTFNombrePrograma = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -111,14 +113,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jBRegistrarPrograma = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jCBFacultad = new javax.swing.JComboBox();
-        jLabel18 = new javax.swing.JLabel();
+        jBEditarPrograma = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
         jPAreasInteres = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jTFNombreArea = new javax.swing.JTextField();
         jBRegistrarArea = new javax.swing.JButton();
         jTFIdArea = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        jBEditarArea = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jBReporteEgresados = new javax.swing.JButton();
@@ -150,18 +154,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jBRegistroEgresadosActionPerformed(evt);
             }
         });
-        jPEgresados.add(jBRegistroEgresados, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, 49));
+        jPEgresados.add(jBRegistroEgresados, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 60, 290, 49));
 
         jBEdicionEgresados.setBackground(new java.awt.Color(255, 255, 255));
         jBEdicionEgresados.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
-        jBEdicionEgresados.setText("EDITAR EGRESADO");
+        jBEdicionEgresados.setText("BUSCAR/EDITAR EGRESADO");
         jBEdicionEgresados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBEdicionEgresados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBEdicionEgresadosActionPerformed(evt);
             }
         });
-        jPEgresados.add(jBEdicionEgresados, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 242, 49));
+        jPEgresados.add(jBEdicionEgresados, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 300, 49));
 
         jBOfertasEgresados.setBackground(new java.awt.Color(255, 255, 255));
         jBOfertasEgresados.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
@@ -190,18 +194,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jBRegistrarEmpresaActionPerformed(evt);
             }
         });
-        jPEmpresas.add(jBRegistrarEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, 49));
+        jPEmpresas.add(jBRegistrarEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 270, 49));
 
         jBEditarEmpresa.setBackground(new java.awt.Color(255, 255, 255));
         jBEditarEmpresa.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
-        jBEditarEmpresa.setText("EDITAR EMPRESA");
+        jBEditarEmpresa.setText("BUSCAR/EDITAR EMPRESA");
         jBEditarEmpresa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBEditarEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBEditarEmpresaActionPerformed(evt);
             }
         });
-        jPEmpresas.add(jBEditarEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 140, 252, 49));
+        jPEmpresas.add(jBEditarEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, -1, 49));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoPrincipal.jpg"))); // NOI18N
         jPEmpresas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 740, 330));
@@ -223,7 +227,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jBRegistrarFacultadActionPerformed(evt);
             }
         });
-        jPGestionFacultades.add(jBRegistrarFacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, 49));
+        jPGestionFacultades.add(jBRegistrarFacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, 49));
         jPGestionFacultades.add(jTFNombreFacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 260, 30));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -237,8 +241,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPGestionFacultades.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, -1, -1));
         jPGestionFacultades.add(jTFIdFacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 260, 30));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoPrincipal.jpg"))); // NOI18N
-        jPGestionFacultades.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 740, 260));
+        jBEditarFacultad.setBackground(new java.awt.Color(255, 255, 255));
+        jBEditarFacultad.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
+        jBEditarFacultad.setText("EDITAR FACULTAD");
+        jBEditarFacultad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBEditarFacultad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEditarFacultadActionPerformed(evt);
+            }
+        });
+        jPGestionFacultades.add(jBEditarFacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 240, 49));
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoPrincipal.jpg"))); // NOI18N
+        jPGestionFacultades.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 740, 260));
 
         jTPInfoParametrica.addTab("Gestion de Facultades", jPGestionFacultades);
 
@@ -265,7 +280,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jBRegistrarProgramaActionPerformed(evt);
             }
         });
-        jPGestionPrograma.add(jBRegistrarPrograma, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, 49));
+        jPGestionPrograma.add(jBRegistrarPrograma, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, 49));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -274,8 +289,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPGestionPrograma.add(jCBFacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 230, 30));
 
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoPrincipal.jpg"))); // NOI18N
-        jPGestionPrograma.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 740, 260));
+        jBEditarPrograma.setBackground(new java.awt.Color(255, 255, 255));
+        jBEditarPrograma.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
+        jBEditarPrograma.setText("EDITAR PROGRAMA");
+        jBEditarPrograma.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBEditarPrograma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEditarProgramaActionPerformed(evt);
+            }
+        });
+        jPGestionPrograma.add(jBEditarPrograma, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 250, 49));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoPrincipal.jpg"))); // NOI18N
+        jPGestionPrograma.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 740, 260));
 
         jTPInfoParametrica.addTab("Gestion de Programa", jPGestionPrograma);
 
@@ -296,7 +322,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jBRegistrarAreaActionPerformed(evt);
             }
         });
-        jPAreasInteres.add(jBRegistrarArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, 49));
+        jPAreasInteres.add(jBRegistrarArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, 49));
         jPAreasInteres.add(jTFIdArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 260, 30));
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -304,8 +330,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel14.setText("ID del Area:");
         jPAreasInteres.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, -1, -1));
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoPrincipal.jpg"))); // NOI18N
-        jPAreasInteres.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 740, 260));
+        jBEditarArea.setBackground(new java.awt.Color(255, 255, 255));
+        jBEditarArea.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
+        jBEditarArea.setText("EDITAR AREA");
+        jBEditarArea.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBEditarArea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEditarAreaActionPerformed(evt);
+            }
+        });
+        jPAreasInteres.add(jBEditarArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 200, 49));
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoPrincipal.jpg"))); // NOI18N
+        jPAreasInteres.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 740, 260));
 
         jTPInfoParametrica.addTab("Gestion Areas de Interes", jPAreasInteres);
 
@@ -378,7 +415,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEdicionEgresados;
+    private javax.swing.JButton jBEditarArea;
     private javax.swing.JButton jBEditarEmpresa;
+    private javax.swing.JButton jBEditarFacultad;
+    private javax.swing.JButton jBEditarPrograma;
     private javax.swing.JButton jBEmpleadosEmpresa;
     private javax.swing.JButton jBOfertasAbiertas;
     private javax.swing.JButton jBOfertasEgresados;
@@ -396,16 +436,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPAreasInteres;
     private javax.swing.JPanel jPEgresados;
     private javax.swing.JPanel jPEmpresas;
@@ -432,7 +472,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 	}// GEN-LAST:event_jBRegistroEgresadosActionPerformed
 
 	private void jBEdicionEgresadosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jBEdicionEgresadosActionPerformed
-		String ced = JOptionPane.showInputDialog(null, "Ingrese la cedula del egresado que desea editar ","INGRESE",JOptionPane.INFORMATION_MESSAGE);
+		String ced = JOptionPane.showInputDialog(null, "Ingrese la cedula del egresado que desea buscar/editar ","INGRESE",JOptionPane.INFORMATION_MESSAGE);
 
 		if (ced!=null) {
 			try {
@@ -468,7 +508,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 	}// GEN-LAST:event_jBRegistrarEmpresaActionPerformed
 
 	private void jBEditarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jBEditarEmpresaActionPerformed
-		String nit = JOptionPane.showInputDialog(null, "Ingrese el NIT de la empresa que desea editar ");
+		String nit = JOptionPane.showInputDialog(null, "Ingrese el NIT de la empresa que desea buscar/editar ");
 		if (nit != null) {
 			try{
 			int nitEm = Integer.parseInt(nit);
@@ -627,6 +667,100 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 				e.printStackTrace();
 			}
 	    }//GEN-LAST:event_jBRegistrarAreaActionPerformed
+
+    private void jBEditarFacultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarFacultadActionPerformed
+       
+        if(jTFIdFacultad.getText().isEmpty()){
+        	JOptionPane.showMessageDialog(null, "Por favor ingrese el ID de la facultad para poder editarla","ERROR",JOptionPane.WARNING_MESSAGE);
+        }else{
+        	try{
+        		if(jTFNombreFacultad.getText().isEmpty()){
+                	JOptionPane.showMessageDialog(null, "Por favor ingrese el nombre de la facultad que desea editar","ERROR",JOptionPane.WARNING_MESSAGE);
+                	return;
+        		}
+        	int idFacultad= Integer.parseInt(jTFIdFacultad.getText());
+        	String nombreFac = jTFNombreFacultad.getText();
+        	Facultad fac = conFac.buscarFacultad(idFacultad);
+        	if(fac!=null){
+        	jTFNombreFacultad.setText(fac.getNombreFacultad());
+        	Facultad facu = new Facultad(idFacultad, nombreFac);
+        	conFac.editarFacultad(facu);
+        	JOptionPane.showMessageDialog(null,"Se ha editado exitosamente","EXITO",JOptionPane.INFORMATION_MESSAGE);
+        	}else{
+        		JOptionPane.showMessageDialog(null, 
+        				"La facultad con ID  ''"+idFacultad+"'' (No) se encuentra registrada","ERROR",JOptionPane.ERROR_MESSAGE);
+        	}
+        	
+        	}catch (ExcepcionNegocio ex){
+				JOptionPane.showMessageDialog(null, ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+			}catch (NumberFormatException exe){
+				JOptionPane.showMessageDialog(null, "Digite el ID del area de interes y verifique que solo tenga valores numericos","ERROR",JOptionPane.WARNING_MESSAGE);
+			}catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+    }//GEN-LAST:event_jBEditarFacultadActionPerformed
+
+    private void jBEditarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarProgramaActionPerformed
+        
+    	if(jTFIdPrograma.getText().isEmpty()){
+        	JOptionPane.showMessageDialog(null, "Por favor ingrese el ID del programa para poder editarlo","ERROR",JOptionPane.WARNING_MESSAGE);
+    	}else{
+    		
+    		try{
+    			if(jTFNombrePrograma.getText().isEmpty()){
+    	        	JOptionPane.showMessageDialog(null, "Por favor ingrese el nombre del programa que desea editar","ERROR",JOptionPane.WARNING_MESSAGE);
+    	        	return;
+    			}
+    			
+            	int idPrograma= Integer.parseInt(jTFIdPrograma.getText());
+            	Facultad idFacultad = (Facultad)jCBFacultad.getSelectedItem();
+            	String nombrePro = jTFNombrePrograma.getText();
+            	Programa programa = new Programa(idFacultad, idPrograma, nombrePro) ;
+            	conPro.editarPrograma(programa);
+            	JOptionPane.showMessageDialog(null,"Se ha editado exitosamente","EXITO",JOptionPane.INFORMATION_MESSAGE);
+            	
+            	}catch (ExcepcionNegocio ex){
+    				JOptionPane.showMessageDialog(null, ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+    			}catch (NumberFormatException exe){
+    				JOptionPane.showMessageDialog(null, "Digite el ID del area de interes y verifique que solo tenga valores numericos","ERROR",JOptionPane.WARNING_MESSAGE);
+    			}catch (Exception e) {
+    				// TODO Auto-generated catch block
+    				e.printStackTrace();
+    			}
+    	}
+    		
+    	
+    }//GEN-LAST:event_jBEditarProgramaActionPerformed
+
+    private void jBEditarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarAreaActionPerformed
+       
+    	if(jTFIdArea.getText().isEmpty()){
+        	JOptionPane.showMessageDialog(null, "Por favor ingrese el ID del area para poder editarla","ERROR",JOptionPane.WARNING_MESSAGE);
+    	}else{
+    		
+    		try{
+            	if(jTFNombreArea.getText().isEmpty()){
+                	JOptionPane.showMessageDialog(null, "Por favor ingrese el nombre del area que desea editar","ERROR",JOptionPane.WARNING_MESSAGE);
+                	return;
+            	}
+    			int idArea= Integer.parseInt(jTFIdArea.getText());
+            	String nombreArea = jTFNombreArea.getText();
+            	AreaInteres area = new AreaInteres(idArea, nombreArea);
+            	conArea.editarAreaInteres(area);
+
+            	
+            	}catch (ExcepcionNegocio ex){
+    				JOptionPane.showMessageDialog(null, ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+    			}catch (NumberFormatException exe){
+    				JOptionPane.showMessageDialog(null, "Digite el ID del area de interes y verifique que solo tenga valores numericos","ERROR",JOptionPane.WARNING_MESSAGE);
+    			}catch (Exception e) {
+    				// TODO Auto-generated catch block
+    				e.printStackTrace();
+    			}
+    	}
+    }//GEN-LAST:event_jBEditarAreaActionPerformed
 
     
     

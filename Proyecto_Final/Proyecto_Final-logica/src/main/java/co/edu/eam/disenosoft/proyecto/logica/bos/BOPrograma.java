@@ -34,4 +34,14 @@ public class BOPrograma {
 	public void registrarPrograma(Programa programa) throws Exception {
 		dao.registrarPrograma(programa);
 	}
+	
+	public void editarPrograma(Programa programa) throws Exception {
+		
+		Programa pro = dao.buscarPrograma(programa.getIdPrograma());
+		if(pro!=null){
+			dao.editarPrograma(programa);
+		}else{
+			throw new ExcepcionNegocio("El programa con ID  ''"+programa.getIdPrograma()+" (NO) se encuentra registrado");
+			}
+	}
 }

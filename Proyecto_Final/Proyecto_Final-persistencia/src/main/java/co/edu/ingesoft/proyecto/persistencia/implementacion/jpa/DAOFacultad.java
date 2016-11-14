@@ -38,6 +38,13 @@ public class DAOFacultad implements IDAOFacultad{
 		em.getTransaction().commit();
 	}
 
+	public void editarFacultad(Facultad facultad) throws Exception {
+		EntityManager em = AdministradorEntityManager.getEntityManager();
+		em.getTransaction().begin();
+		em.merge(facultad);
+		em.getTransaction().commit();	
+	}
+
 
 
 }

@@ -37,4 +37,11 @@ public class DAOPrograma implements IDAOPrograma{
 		em.getTransaction().commit();
 	}
 
+	public void editarPrograma(Programa programa) throws Exception {
+		EntityManager em = AdministradorEntityManager.getEntityManager();
+		em.getTransaction().begin();
+		em.merge(programa);
+		em.getTransaction().commit();	
+	}
+
 }

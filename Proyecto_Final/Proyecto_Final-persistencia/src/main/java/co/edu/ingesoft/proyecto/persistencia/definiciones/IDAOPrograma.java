@@ -19,4 +19,6 @@ public interface IDAOPrograma {
 	public Programa buscarPrograma (int id)throws Exception;
 	
 	public void registrarPrograma (Programa programa)throws Exception;
+	
+	public void editarPrograma (Programa programa)throws Exception;
 }

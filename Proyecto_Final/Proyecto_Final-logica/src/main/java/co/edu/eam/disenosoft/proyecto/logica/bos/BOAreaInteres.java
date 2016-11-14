@@ -36,4 +36,15 @@ public class BOAreaInteres {
 		
 		return dao.buscarAreaInteres(id);
 	}
+	
+	public void editarAreaInteres(AreaInteres area) throws Exception {
+		
+		AreaInteres ar = dao.buscarAreaInteres(area.getIdArea());
+		
+		if(ar!=null){
+			dao.editarAreaInteres(area);
+		}else{
+			throw new ExcepcionNegocio("La area de interes con ID= ''"+area.getIdArea()+"'' (NO) se encuantra registrada");
+		}
+	}
 }
