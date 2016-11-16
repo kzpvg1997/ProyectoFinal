@@ -9,7 +9,6 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-
 import co.edu.eam.disenosoft.proyecto.logica.excepciones.ExcepcionNegocio;
 import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorAreaInteres;
 import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorContacto;
