@@ -13,6 +13,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -23,12 +25,13 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoEmpresa
 
 /**
  * @author TOSHIBAP55W
- *
  */
+
+
 @Entity
 @Table(name="tb_info_laboral")
 public class InfoLaboralEgresado implements Serializable{
-
+	
 	@Id
 	@OneToOne
 	@JoinColumn(name="id_egresado")

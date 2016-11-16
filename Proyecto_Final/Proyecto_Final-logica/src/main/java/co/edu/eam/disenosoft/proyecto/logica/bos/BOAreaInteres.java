@@ -3,6 +3,8 @@
  */
 package co.edu.eam.disenosoft.proyecto.logica.bos;
 
+import java.util.List;
+
 import co.edu.eam.disenosoft.proyecto.logica.excepciones.ExcepcionNegocio;
 import co.edu.ingesoft.proyecto.persistencia.definiciones.IDAOAreaInteres;
 import co.edu.ingesoft.proyecto.persistencia.entidades.AreaInteres;
@@ -46,5 +48,9 @@ public class BOAreaInteres {
 		}else{
 			throw new ExcepcionNegocio("La area de interes con ID= ''"+area.getIdArea()+"'' (NO) se encuantra registrada");
 		}
+	}
+	
+	public List<AreaInteres> listarTodas()throws Exception{
+		return dao.listarTodas();
 	}
 }

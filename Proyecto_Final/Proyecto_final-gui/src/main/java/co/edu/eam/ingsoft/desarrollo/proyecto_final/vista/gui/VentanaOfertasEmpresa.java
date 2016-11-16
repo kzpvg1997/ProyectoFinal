@@ -5,6 +5,17 @@
  */
 package co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.gui;
 
+import java.util.Iterator;
+import java.util.List;
+
+import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorAreaInteres;
+import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorEmpresa;
+import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorPrograma;
+import co.edu.ingesoft.proyecto.persistencia.entidades.AreaInteres;
+import co.edu.ingesoft.proyecto.persistencia.entidades.Ciudad;
+import co.edu.ingesoft.proyecto.persistencia.entidades.Empresa;
+import co.edu.ingesoft.proyecto.persistencia.entidades.Programa;
+
 /**
  *
  * @author TOSHIBAP55W
@@ -14,11 +25,30 @@ public class VentanaOfertasEmpresa extends javax.swing.JFrame {
     /**
      * Creates new form VentanaOfertasEmpresa
      */
+	
+	private ControladorEmpresa conEmp;
+	private ControladorPrograma conProg;
+	private ControladorAreaInteres conArea;
+	
     public VentanaOfertasEmpresa() {
         initComponents();
         this.setLocationRelativeTo(null);
     	this.setResizable(false);
     	setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+    	conEmp = new ControladorEmpresa();
+    	conProg = new ControladorPrograma();
+    	conArea = new ControladorAreaInteres();
+    	
+    	try {
+			cargarComboEmpresas();
+			cargarComboCiudades();
+			cargarComboProgramas();
+			cargarComboAreas();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     /**
@@ -216,4 +246,36 @@ public class VentanaOfertasEmpresa extends javax.swing.JFrame {
     this.dispose();
 }//GEN-LAST:event_formWindowClosing
     
+    
+    public void cargarComboEmpresas()throws Exception{
+    	jCBEmpresaOferta.removeAllItems();
+    	List<Empresa>lista= conEmp.listarEmpresas();
+    	for (Empresa empresa : lista) {
+    		jCBEmpresaOferta.addItem(empresa);
+		}
+    }
+    
+    public void cargarComboCiudades()throws Exception{
+    	jCBCiudadOferta.removeAllItems();
+    	List<Ciudad>lista= conEmp.listarCiudades();
+    	for (Ciudad ciudad : lista) {
+    		jCBCiudadOferta.addItem(ciudad);
+		}
+    }
+    
+    public void cargarComboProgramas()throws Exception{
+    	jCBPrograma.removeAllItems();
+    	List<Programa>lista= conProg.listarProgramas();
+    	for (Programa programa : lista) {
+    		jCBPrograma.addItem(programa);
+		}
+    }
+    
+    public void cargarComboAreas()throws Exception{
+    	jCBAreasConocimiento.removeAllItems();
+    	List<AreaInteres>lista= conArea.listarTodas();
+    	for (AreaInteres areas : lista) {
+    		jCBAreasConocimiento.addItem(areas);
+		}
+    }
 }

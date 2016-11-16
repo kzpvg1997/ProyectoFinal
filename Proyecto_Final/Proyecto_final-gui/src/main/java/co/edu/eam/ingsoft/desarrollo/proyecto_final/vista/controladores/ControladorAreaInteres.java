@@ -3,6 +3,8 @@
  */
 package co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores;
 
+import java.util.List;
+
 import co.edu.eam.disenosoft.proyecto.logica.bos.BOAreaInteres;
 import co.edu.ingesoft.proyecto.persistencia.entidades.AreaInteres;
 
@@ -29,5 +31,9 @@ public class ControladorAreaInteres {
 	
 	public void editarAreaInteres(AreaInteres area) throws Exception {
 		boArea.editarAreaInteres(area);
+	}
+	
+	public List<AreaInteres> listarTodas() throws Exception{
+		return boArea.listarTodas();
 	}
 }

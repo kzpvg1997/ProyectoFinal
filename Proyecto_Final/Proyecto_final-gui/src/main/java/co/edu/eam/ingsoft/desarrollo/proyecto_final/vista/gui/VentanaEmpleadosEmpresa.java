@@ -158,9 +158,16 @@ public class VentanaEmpleadosEmpresa extends javax.swing.JFrame {
     }
     
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-       
-    	Empresa empresa = (Empresa)jCBEmpresaReporte.getSelectedItem();
-    	cargarEmpleadosEmpresa(empresa);
+    	try {
+    	Empresa emp = (Empresa)jCBEmpresaReporte.getSelectedItem();
+    	cargarEmpleadosEmpresa(emp);
+		
+    	
+    	} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
     }//GEN-LAST:event_jBBuscarActionPerformed
     
 
@@ -171,7 +178,7 @@ public class VentanaEmpleadosEmpresa extends javax.swing.JFrame {
     		List<InfoLaboralEgresado> egresados = conEmp.listarEgresadosEmpresa(empresa);
     		if(egresados.size() > 0){
 				for (InfoLaboralEgresado infoEg : egresados) {
-					table.addRow(new Object[]{infoEg.getIdEmpresa().getNombreEmpresa(),infoEg.getIdEgresado().getNombre(),infoEg.getCargoEmpresa(),infoEg.getFechaIngreso()});
+					table.addRow(new Object[]{infoEg.getIdEmpresa().getNombreEmpresa(),infoEg.getIdEgresado().getNombre(),infoEg.getIdEgresado().getIdPrograma().getNombrePrograma(),infoEg.getCargoEmpresa(),infoEg.getFechaIngreso()});
 				}
     		}
     		

@@ -3,6 +3,11 @@
  */
 package co.edu.ingesoft.proyecto.persistencia.definiciones;
 
+import java.util.List;
+
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
 import co.edu.ingesoft.proyecto.persistencia.entidades.AreaInteres;
 
 /**
@@ -16,4 +21,6 @@ public interface IDAOAreaInteres {
 	public AreaInteres buscarAreaInteres (int id)throws Exception;
 	
 	public void editarAreaInteres (AreaInteres area)throws Exception;
+	
+	public List<AreaInteres> listarTodas()throws Exception;
 }

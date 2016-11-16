@@ -32,9 +32,11 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoEmpresa
 	@NamedQuery(name=Empresa.EMPRESAS,
 	query="SELECT emp FROM Empresa emp"),
 	
-    @NamedQuery(name=Empresa.EMPLEADOS_POR_EMPRESA,
-	query="SELECT infl.idEgresado.Nombre,infl.idEgresado.idPrograma.nombrePrograma,infl.cargoEmpresa,infl.fechaIngreso FROM InfoLaboralEgresado infl WHERE infl.idEmpresa=1?")
+	 @NamedQuery(name=Empresa.EMPLEADOS_POR_EMPRESA,
+		query="SELECT inf FROM InfoLaboralEgresado inf WHERE inf.idEmpresa=?1")
+
 	})
+
 @Entity
 @Table(name="tb_empresa")
 public class Empresa implements Serializable{
@@ -45,7 +47,7 @@ public class Empresa implements Serializable{
 	
 	public static final String EMPRESAS = "Empresa.empresas";
 	
-	public static final String EMPLEADOS_POR_EMPRESA = "InfoLabral.empleadosEmpresa";
+	public static final String EMPLEADOS_POR_EMPRESA = "Empresa.empleadosEmpresa";
 	
 	@Id
 	@Column(name="id_empresa")
