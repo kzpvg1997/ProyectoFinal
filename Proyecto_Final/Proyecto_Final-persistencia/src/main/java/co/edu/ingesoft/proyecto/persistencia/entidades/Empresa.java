@@ -30,7 +30,10 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoEmpresa
 	query="SELECT dep FROM Departamento dep"),
 	
 	@NamedQuery(name=Empresa.EMPRESAS,
-	query="SELECT emp FROM Empresa emp")
+	query="SELECT emp FROM Empresa emp"),
+	
+    @NamedQuery(name=Empresa.EMPLEADOS_POR_EMPRESA,
+	query="SELECT infl.idEgresado.Nombre,infl.idEgresado.idPrograma.nombrePrograma,infl.cargoEmpresa,infl.fechaIngreso FROM InfoLaboralEgresado infl WHERE infl.idEmpresa=1?")
 	})
 @Entity
 @Table(name="tb_empresa")
@@ -41,6 +44,8 @@ public class Empresa implements Serializable{
 	public static final String DEPARTAMENTOS_EMPRESA = "Empresa.departamentos";
 	
 	public static final String EMPRESAS = "Empresa.empresas";
+	
+	public static final String EMPLEADOS_POR_EMPRESA = "InfoLabral.empleadosEmpresa";
 	
 	@Id
 	@Column(name="id_empresa")

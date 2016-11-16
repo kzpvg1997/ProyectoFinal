@@ -38,7 +38,6 @@ public class HistorialLaboral implements Serializable{
 		
 	}
 
-
 	/**
 	 * @param idEgresado
 	 * @param idEmpresa

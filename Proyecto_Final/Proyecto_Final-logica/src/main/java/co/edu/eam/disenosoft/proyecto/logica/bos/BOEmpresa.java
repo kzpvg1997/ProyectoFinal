@@ -10,6 +10,7 @@ import co.edu.ingesoft.proyecto.persistencia.definiciones.IDAOEmpresa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Ciudad;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Departamento;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Empresa;
+import co.edu.ingesoft.proyecto.persistencia.entidades.InfoLaboralEgresado;
 import co.edu.ingesoft.proyecto.persistencia.entidades.SectorEmpresa;
 import co.edu.ingesoft.proyecto.persistencia.implementacion.jpa.DAOEmpresa;
 
@@ -92,5 +93,9 @@ public class BOEmpresa {
 	
 	public List<Empresa> listarEmpresas() throws Exception {
 		return dao.listarEmpresas();
+	}
+	
+	public List<InfoLaboralEgresado> listarEgresadosEmpresa(Empresa empresa) throws Exception {
+		return dao.listarEgresadosEmpresa(empresa);
 	}
 }

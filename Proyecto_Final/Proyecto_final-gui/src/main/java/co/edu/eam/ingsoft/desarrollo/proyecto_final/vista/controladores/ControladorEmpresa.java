@@ -9,6 +9,7 @@ import co.edu.eam.disenosoft.proyecto.logica.bos.BOEmpresa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Ciudad;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Departamento;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Empresa;
+import co.edu.ingesoft.proyecto.persistencia.entidades.InfoLaboralEgresado;
 
 /**
  * @author TOSHIBAP55W
@@ -44,5 +45,9 @@ public class ControladorEmpresa {
 	
 	public List<Empresa> listarEmpresas() throws Exception {
 		return boEmp.listarEmpresas();
+	}
+	
+	public List<InfoLaboralEgresado> listarEgresadosEmpresa(Empresa empresa) throws Exception {
+		return boEmp.listarEgresadosEmpresa(empresa);
 	}
 }

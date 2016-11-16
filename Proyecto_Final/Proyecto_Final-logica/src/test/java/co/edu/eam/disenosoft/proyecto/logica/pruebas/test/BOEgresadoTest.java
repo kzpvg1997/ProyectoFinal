@@ -17,6 +17,23 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.Facultad;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Programa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.NivelEducativoEnum;
 
+//import org.caferrer.testdata.junit.TestDataUtil;
+//import org.junit.AfterClass;
+//import org.junit.Assert;
+//import org.junit.Before;
+//import org.junit.BeforeClass;
+//import org.junit.Test;
+//
+//import co.edu.eam.disenosoft.proyecto.logica.bos.BOEducacionEgresado;
+//import co.edu.eam.disenosoft.proyecto.logica.bos.BOEgresado;
+//import co.edu.eam.disenosoft.proyecto.logica.bos.BOFacultad;
+//import co.edu.eam.disenosoft.proyecto.logica.bos.BOPrograma;
+//import co.edu.ingesoft.proyecto.persistencia.entidades.EducacionEgresado;
+//import co.edu.ingesoft.proyecto.persistencia.entidades.Egresado;
+//import co.edu.ingesoft.proyecto.persistencia.entidades.Facultad;
+//import co.edu.ingesoft.proyecto.persistencia.entidades.Programa;
+//import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.NivelEducativoEnum;
+
 public class BOEgresadoTest {
 
 

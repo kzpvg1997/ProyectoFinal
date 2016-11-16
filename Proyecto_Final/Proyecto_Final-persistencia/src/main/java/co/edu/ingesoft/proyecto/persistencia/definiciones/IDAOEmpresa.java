@@ -8,6 +8,7 @@ import java.util.List;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Ciudad;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Departamento;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Empresa;
+import co.edu.ingesoft.proyecto.persistencia.entidades.InfoLaboralEgresado;
 import co.edu.ingesoft.proyecto.persistencia.entidades.SectorEmpresa;
 
 
@@ -23,6 +24,8 @@ public interface IDAOEmpresa {
 	
 	public List<Empresa> listarEmpresas()throws Exception;
 	
+	public List<InfoLaboralEgresado> listarEgresadosEmpresa(Empresa empresa)throws Exception;
+	
 	public void registrarEmpresa (Empresa emp)throws Exception;
 	
 	public Empresa buscarEmpresa (int nit)throws Exception;
@@ -34,4 +37,5 @@ public interface IDAOEmpresa {
 	public Departamento buscarDepartamento(int id)throws Exception;
 	
 	public SectorEmpresa buscarSectorEmpresa(int id)throws Exception;
+	
 }

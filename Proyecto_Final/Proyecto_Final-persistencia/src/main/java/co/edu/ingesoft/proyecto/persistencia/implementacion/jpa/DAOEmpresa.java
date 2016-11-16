@@ -13,6 +13,7 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.Ciudad;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Departamento;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Empresa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Facultad;
+import co.edu.ingesoft.proyecto.persistencia.entidades.InfoLaboralEgresado;
 import co.edu.ingesoft.proyecto.persistencia.entidades.SectorEmpresa;
 import co.edu.ingesoft.proyecto.persistencia.utilidades.AdministradorEntityManager;
 
@@ -76,5 +77,14 @@ public class DAOEmpresa implements IDAOEmpresa{
 		Query q = em.createNamedQuery(Empresa.EMPRESAS);
 		List<Empresa> empresas = q.getResultList();
 		return empresas;
+	}
+
+	public List<InfoLaboralEgresado> listarEgresadosEmpresa(Empresa empresa) throws Exception {
+		
+		EntityManager em = AdministradorEntityManager.getEntityManager();
+		Query q = em.createNamedQuery(Empresa.EMPLEADOS_POR_EMPRESA);
+		q.setParameter(1, empresa);
+		List<InfoLaboralEgresado> egresados = q.getResultList();
+		return egresados;
 	}
 }

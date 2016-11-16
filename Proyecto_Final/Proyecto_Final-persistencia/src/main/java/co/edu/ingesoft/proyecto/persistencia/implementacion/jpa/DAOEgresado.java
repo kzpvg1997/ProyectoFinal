@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 
 import co.edu.ingesoft.proyecto.persistencia.definiciones.IDAOEgresado;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Egresado;
+import co.edu.ingesoft.proyecto.persistencia.entidades.HistorialLaboral;
+import co.edu.ingesoft.proyecto.persistencia.entidades.HistorialLaboralPK;
 import co.edu.ingesoft.proyecto.persistencia.entidades.InfoLaboralEgresado;
 import co.edu.ingesoft.proyecto.persistencia.utilidades.AdministradorEntityManager;
 
@@ -55,5 +57,7 @@ public class DAOEgresado implements IDAOEgresado{
 		em.merge(info);
 		em.getTransaction().commit();
 	}
+
+	
 
 }

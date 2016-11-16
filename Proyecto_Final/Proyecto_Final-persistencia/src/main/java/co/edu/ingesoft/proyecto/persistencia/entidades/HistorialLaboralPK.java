@@ -14,6 +14,21 @@ public class HistorialLaboralPK implements Serializable{
 	private int idEgresado;
 	
 	private int idEmpresa;
+	
+	
+	
+	public HistorialLaboralPK(){
+		
+	}
+	/**
+	 * @param idEgresado
+	 * @param idEmpresa
+	 */
+	public HistorialLaboralPK(int idEgresado, int idEmpresa) {
+		super();
+		this.idEgresado = idEgresado;
+		this.idEmpresa = idEmpresa;
+	}
 
 	/**
 	 * @return the idEgresado

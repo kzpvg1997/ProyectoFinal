@@ -8,6 +8,8 @@ import co.edu.ingesoft.proyecto.persistencia.definiciones.IDAOEducacionEgresado;
 import co.edu.ingesoft.proyecto.persistencia.definiciones.IDAOEgresado;
 import co.edu.ingesoft.proyecto.persistencia.entidades.EducacionEgresado;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Egresado;
+import co.edu.ingesoft.proyecto.persistencia.entidades.HistorialLaboral;
+import co.edu.ingesoft.proyecto.persistencia.entidades.HistorialLaboralPK;
 import co.edu.ingesoft.proyecto.persistencia.entidades.InfoLaboralEgresado;
 import co.edu.ingesoft.proyecto.persistencia.implementacion.jpa.DAOEducacionEgresado;
 import co.edu.ingesoft.proyecto.persistencia.implementacion.jpa.DAOEgresado;
@@ -88,4 +90,5 @@ public class BOEgresado {
 			throw new ExcepcionNegocio("Este egresado no existe");
 		}
 	}
+	
 }

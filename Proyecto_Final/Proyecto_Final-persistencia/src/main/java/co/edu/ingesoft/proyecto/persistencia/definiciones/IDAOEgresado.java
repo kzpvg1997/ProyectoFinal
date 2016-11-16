@@ -4,6 +4,8 @@
 package co.edu.ingesoft.proyecto.persistencia.definiciones;
 
 import co.edu.ingesoft.proyecto.persistencia.entidades.Egresado;
+import co.edu.ingesoft.proyecto.persistencia.entidades.HistorialLaboral;
+import co.edu.ingesoft.proyecto.persistencia.entidades.HistorialLaboralPK;
 import co.edu.ingesoft.proyecto.persistencia.entidades.InfoLaboralEgresado;
 
 /**
