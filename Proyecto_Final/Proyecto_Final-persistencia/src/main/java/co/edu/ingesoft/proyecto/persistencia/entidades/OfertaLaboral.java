@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,9 +25,13 @@ import javax.persistence.TemporalType;
 @Table(name="tb_oferta_laboral")
 public class OfertaLaboral implements Serializable{
 
+	
 	@Id
 	@Column(name="id_oferta")
 	private int idOferta;
+	
+	@Column(name="nombre_oferta",nullable=false,length=45)
+	private String nombreOferta;
 	
 	@ManyToOne
 	@JoinColumn(name="id_empresa")
@@ -69,6 +75,7 @@ public class OfertaLaboral implements Serializable{
 
 	/**
 	 * @param idOferta
+	 * @param nombreOferta
 	 * @param idEmpresa
 	 * @param idCudad
 	 * @param idArea
@@ -80,11 +87,12 @@ public class OfertaLaboral implements Serializable{
 	 * @param salario
 	 * @param aperturaOferta
 	 */
-	public OfertaLaboral(int idOferta, Empresa idEmpresa, Ciudad idCudad, AreaInteres idArea, Programa programa,
-			String resumen, String descripcion, String requerimientos, String cargo, double salario,
+	public OfertaLaboral(int idOferta, String nombreOferta, Empresa idEmpresa, Ciudad idCudad, AreaInteres idArea,
+			Programa programa, String resumen, String descripcion, String requerimientos, String cargo, double salario,
 			Date aperturaOferta) {
 		super();
 		this.idOferta = idOferta;
+		this.nombreOferta = nombreOferta;
 		this.idEmpresa = idEmpresa;
 		this.idCudad = idCudad;
 		this.idArea = idArea;
@@ -97,17 +105,12 @@ public class OfertaLaboral implements Serializable{
 		this.aperturaOferta = aperturaOferta;
 	}
 
-
-
-
-
 	/**
 	 * @return the idOferta
 	 */
 	public int getIdOferta() {
 		return idOferta;
 	}
-
 
 	/**
 	 * @param idOferta the idOferta to set
@@ -116,6 +119,19 @@ public class OfertaLaboral implements Serializable{
 		this.idOferta = idOferta;
 	}
 
+	/**
+	 * @return the nombreOferta
+	 */
+	public String getNombreOferta() {
+		return nombreOferta;
+	}
+
+	/**
+	 * @param nombreOferta the nombreOferta to set
+	 */
+	public void setNombreOferta(String nombreOferta) {
+		this.nombreOferta = nombreOferta;
+	}
 
 	/**
 	 * @return the idEmpresa
@@ -124,14 +140,12 @@ public class OfertaLaboral implements Serializable{
 		return idEmpresa;
 	}
 
-
 	/**
 	 * @param idEmpresa the idEmpresa to set
 	 */
 	public void setIdEmpresa(Empresa idEmpresa) {
 		this.idEmpresa = idEmpresa;
 	}
-
 
 	/**
 	 * @return the idCudad
@@ -140,14 +154,12 @@ public class OfertaLaboral implements Serializable{
 		return idCudad;
 	}
 
-
 	/**
 	 * @param idCudad the idCudad to set
 	 */
 	public void setIdCudad(Ciudad idCudad) {
 		this.idCudad = idCudad;
 	}
-
 
 	/**
 	 * @return the idArea
@@ -156,13 +168,118 @@ public class OfertaLaboral implements Serializable{
 		return idArea;
 	}
 
-
 	/**
 	 * @param idArea the idArea to set
 	 */
 	public void setIdArea(AreaInteres idArea) {
 		this.idArea = idArea;
 	}
-	
+
+	/**
+	 * @return the programa
+	 */
+	public Programa getPrograma() {
+		return programa;
+	}
+
+	/**
+	 * @param programa the programa to set
+	 */
+	public void setPrograma(Programa programa) {
+		this.programa = programa;
+	}
+
+	/**
+	 * @return the resumen
+	 */
+	public String getResumen() {
+		return resumen;
+	}
+
+	/**
+	 * @param resumen the resumen to set
+	 */
+	public void setResumen(String resumen) {
+		this.resumen = resumen;
+	}
+
+	/**
+	 * @return the descripcion
+	 */
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	/**
+	 * @param descripcion the descripcion to set
+	 */
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	/**
+	 * @return the requerimientos
+	 */
+	public String getRequerimientos() {
+		return requerimientos;
+	}
+
+	/**
+	 * @param requerimientos the requerimientos to set
+	 */
+	public void setRequerimientos(String requerimientos) {
+		this.requerimientos = requerimientos;
+	}
+
+	/**
+	 * @return the cargo
+	 */
+	public String getCargo() {
+		return cargo;
+	}
+
+	/**
+	 * @param cargo the cargo to set
+	 */
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+
+	/**
+	 * @return the salario
+	 */
+	public double getSalario() {
+		return salario;
+	}
+
+	/**
+	 * @param salario the salario to set
+	 */
+	public void setSalario(double salario) {
+		this.salario = salario;
+	}
+
+	/**
+	 * @return the aperturaOferta
+	 */
+	public Date getAperturaOferta() {
+		return aperturaOferta;
+	}
+
+	/**
+	 * @param aperturaOferta the aperturaOferta to set
+	 */
+	public void setAperturaOferta(Date aperturaOferta) {
+		this.aperturaOferta = aperturaOferta;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return nombreOferta;
+	}
+
 	
 }
