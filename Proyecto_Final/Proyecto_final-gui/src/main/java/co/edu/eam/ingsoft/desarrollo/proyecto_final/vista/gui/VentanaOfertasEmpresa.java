@@ -296,7 +296,7 @@ public class VentanaOfertasEmpresa extends javax.swing.JFrame {
     	
     	OfertaLaboral oferta = new OfertaLaboral(idOferta, nombreOferta, idEmpresa, idCiudad, idArea, programa,
     			resumen, descripcion, requerimientos, cargo, salario, aperturaOferta);
-    	
+    	System.out.println(idOferta);
 			conOfert.gernerarOferta(oferta);
 			limpiarCampos();
 			JOptionPane.showMessageDialog(null, "Se ha registrado una oferta exitosamente.", "EXITO",
@@ -367,6 +367,6 @@ public class VentanaOfertasEmpresa extends javax.swing.JFrame {
     	jTARequerimientos.setText(null);
     	jTFCargoOfrecer.setText(null);
     	jTFSalario.setText(null);
-    	 jCalendarAperturaOfert.setDate(null);
+    	 jCalendarAperturaOfert.setDate(new Date());
     }
 }

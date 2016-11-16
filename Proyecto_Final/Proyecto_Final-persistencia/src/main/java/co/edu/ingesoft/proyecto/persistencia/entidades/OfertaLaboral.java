@@ -49,13 +49,13 @@ public class OfertaLaboral implements Serializable{
 	@JoinColumn(name="programa")
 	private Programa programa;
 	
-	@Column(name="resumen",length=50)
+	@Column(name="resumen",length=150)
 	private String resumen;
 	
-	@Column(name="descripcion",length=50,nullable=false)
+	@Column(name="descripcion",length=150,nullable=false)
 	private String descripcion;
 	
-	@Column(name="requerimientos",length=50)
+	@Column(name="requerimientos",length=150)
 	private String requerimientos;
 	
 	@Column(name="cargo",length=50,nullable=false)

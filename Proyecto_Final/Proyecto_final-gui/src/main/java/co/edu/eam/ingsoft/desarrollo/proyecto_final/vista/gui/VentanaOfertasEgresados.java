@@ -203,6 +203,11 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
 
         jBVerOferta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono-Buscar.png"))); // NOI18N
         jBVerOferta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBVerOferta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBVerOfertaActionPerformed(evt);
+            }
+        });
         getContentPane().add(jBVerOferta, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 70, 80, 50));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
@@ -211,27 +216,7 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInicioActionPerformed
-        VentanaPrincipal principal = new VentanaPrincipal(0);
-        principal.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jBInicioActionPerformed
-
-    private void jBAplicarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAplicarOfertaActionPerformed
-        VentanaPrincipal principal = new VentanaPrincipal(0);
-        principal.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jBAplicarOfertaActionPerformed
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        VentanaPrincipal principal = new VentanaPrincipal(0);
-        this.dispose();
-        principal.setVisible(true);
-       
-    }//GEN-LAST:event_formWindowClosing
-
-   
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAplicarOferta;
     private javax.swing.JButton jBInicio;
@@ -269,4 +254,31 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
     private javax.swing.JTextField jTFProgramaOfrecer;
     private javax.swing.JTextField jTFSalarioOfert;
     // End of variables declaration//GEN-END:variables
+    
+    private void jBInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInicioActionPerformed
+        VentanaPrincipal principal = new VentanaPrincipal(0);
+        principal.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jBInicioActionPerformed
+
+    private void jBAplicarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAplicarOfertaActionPerformed
+        VentanaPrincipal principal = new VentanaPrincipal(0);
+        principal.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jBAplicarOfertaActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        VentanaPrincipal principal = new VentanaPrincipal(0);
+        this.dispose();
+        principal.setVisible(true);
+       
+    }//GEN-LAST:event_formWindowClosing
+
+    private void jBVerOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerOfertaActionPerformed
+       jPanelDatos.setVisible(true);
+    }//GEN-LAST:event_jBVerOfertaActionPerformed
+
+   
+
+    
 }
