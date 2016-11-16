@@ -94,7 +94,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPEmpresas = new javax.swing.JPanel();
         jBRegistrarEmpresa = new javax.swing.JButton();
         jBEditarEmpresa = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jBRegistrarOferta = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
         jPInfoParametrica = new javax.swing.JPanel();
         jTPInfoParametrica = new javax.swing.JTabbedPane();
         jPGestionFacultades = new javax.swing.JPanel();
@@ -194,7 +195,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jBRegistrarEmpresaActionPerformed(evt);
             }
         });
-        jPEmpresas.add(jBRegistrarEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 270, 49));
+        jPEmpresas.add(jBRegistrarEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 270, 49));
 
         jBEditarEmpresa.setBackground(new java.awt.Color(255, 255, 255));
         jBEditarEmpresa.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
@@ -205,10 +206,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jBEditarEmpresaActionPerformed(evt);
             }
         });
-        jPEmpresas.add(jBEditarEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, -1, 49));
+        jPEmpresas.add(jBEditarEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, 49));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoPrincipal.jpg"))); // NOI18N
-        jPEmpresas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 740, 330));
+        jBRegistrarOferta.setBackground(new java.awt.Color(255, 255, 255));
+        jBRegistrarOferta.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
+        jBRegistrarOferta.setText("REGISTRAR OFERTA");
+        jBRegistrarOferta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBRegistrarOferta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRegistrarOfertaActionPerformed(evt);
+            }
+        });
+        jPEmpresas.add(jBRegistrarOferta, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 270, 49));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoPrincipal.jpg"))); // NOI18N
+        jPEmpresas.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 740, 330));
 
         jTPPrincipal.addTab("Empresas", jPEmpresas);
 
@@ -425,6 +437,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jBRegistrarArea;
     private javax.swing.JButton jBRegistrarEmpresa;
     private javax.swing.JButton jBRegistrarFacultad;
+    private javax.swing.JButton jBRegistrarOferta;
     private javax.swing.JButton jBRegistrarPrograma;
     private javax.swing.JButton jBRegistroEgresados;
     private javax.swing.JButton jBReporteEgresados;
@@ -437,7 +450,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
@@ -446,6 +458,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPAreasInteres;
     private javax.swing.JPanel jPEgresados;
     private javax.swing.JPanel jPEmpresas;
@@ -761,6 +774,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     			}
     	}
     }//GEN-LAST:event_jBEditarAreaActionPerformed
+
+    private void jBRegistrarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistrarOfertaActionPerformed
+      
+        VentanaOfertasEmpresa ofertasEmp = new VentanaOfertasEmpresa();
+		ofertasEmp.setVisible(true);
+		this.dispose();
+    }//GEN-LAST:event_jBRegistrarOfertaActionPerformed
 
     
     
