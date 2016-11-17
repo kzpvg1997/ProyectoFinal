@@ -5,6 +5,16 @@
  */
 package co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.gui;
 
+import java.util.List;
+
+import org.jfree.chart.ChartPanel;
+import org.jfree.data.category.DefaultCategoryDataset;
+
+import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorOfertaLaboral;
+import co.edu.ingesoft.proyecto.persistencia.entidades.AreaInteres;
+import co.edu.ingesoft.proyecto.persistencia.entidades.OfertaLaboral;
+import javassist.bytecode.stackmap.BasicBlock.Catch;
+
 /**
  *
  * @author TOSHIBAP55W
@@ -14,11 +24,15 @@ public class VentanaOfertasAbiertas extends javax.swing.JFrame {
     /**
      * Creates new form VentanaOfertasAbiertas
      */
+	
+	private ControladorOfertaLaboral conOfer;
+	
     public VentanaOfertasAbiertas() {
         initComponents();
          this.setLocationRelativeTo(null);
            setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
             this.setResizable(false);
+            conOfer =  new ControladorOfertaLaboral();
     }
 
     /**
@@ -35,6 +49,7 @@ public class VentanaOfertasAbiertas extends javax.swing.JFrame {
         jLTitulo1 = new javax.swing.JLabel();
         jCBProgramaAcademico = new javax.swing.JComboBox();
         jBBuscar = new javax.swing.JButton();
+        jPanelDatos = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -49,7 +64,7 @@ public class VentanaOfertasAbiertas extends javax.swing.JFrame {
         jLTitulo2.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         jLTitulo2.setForeground(new java.awt.Color(255, 255, 255));
         jLTitulo2.setText("OFERTAS ABIERTAS");
-        getContentPane().add(jLTitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
+        getContentPane().add(jLTitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, -1, -1));
 
         jBInicio.setBackground(new java.awt.Color(255, 255, 255));
         jBInicio.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -60,24 +75,37 @@ public class VentanaOfertasAbiertas extends javax.swing.JFrame {
                 jBInicioActionPerformed(evt);
             }
         });
-        getContentPane().add(jBInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 140, 60));
+        getContentPane().add(jBInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, 140, 60));
 
         jLTitulo1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLTitulo1.setForeground(new java.awt.Color(255, 255, 255));
         jLTitulo1.setText("Programa Academico:");
-        getContentPane().add(jLTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
+        getContentPane().add(jLTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, -1, -1));
 
-        getContentPane().add(jCBProgramaAcademico, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 320, 40));
+        getContentPane().add(jCBProgramaAcademico, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, 320, 40));
 
         jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono-Buscar.png"))); // NOI18N
-        getContentPane().add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 120, 90, 60));
+        getContentPane().add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 130, 90, 60));
+
+        jPanelDatos.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 980, 480));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 850, 570));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBBuscar;
+    private javax.swing.JButton jBInicio;
+    private javax.swing.JComboBox jCBProgramaAcademico;
+    private javax.swing.JLabel jLTitulo1;
+    private javax.swing.JLabel jLTitulo2;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JPanel jPanelDatos;
+    // End of variables declaration//GEN-END:variables
+    
     private void jBInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInicioActionPerformed
         VentanaPrincipal principal = new VentanaPrincipal(3);
         principal.setVisible(true);
@@ -92,13 +120,30 @@ public class VentanaOfertasAbiertas extends javax.swing.JFrame {
        
     }//GEN-LAST:event_formWindowClosing
 
+   private void cargarEstadistica(){
     
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBBuscar;
-    private javax.swing.JButton jBInicio;
-    private javax.swing.JComboBox<String> jCBProgramaAcademico;
-    private javax.swing.JLabel jLTitulo1;
-    private javax.swing.JLabel jLTitulo2;
-    private javax.swing.JLabel jLabel10;
-    // End of variables declaration//GEN-END:variables
+    ChartPanel panel;
+    
+    try{
+    	List<OfertaLaboral>listaOfertas = conOfer.listarOfertas();
+    	
+    	int contador=0;
+    	AreaInteres areaAnterior = null;
+    	DefaultCategoryDataset ds = new DefaultCategoryDataset();
+    	
+    	for (int i = 0; i < listaOfertas.size(); i++) {
+			
+    		if(listaOfertas.get(i).isCierreOferta()== false){
+    			areaAnterior = listaOfertas.get(i).getIdArea();
+    			for (int j = 0; j < listaOfertas.size(); j++) {
+					
+				}
+    		}
+		}
+    	
+    }catch (Exception e){
+    	e.getMessage();
+    }
+   }
+ 
 }

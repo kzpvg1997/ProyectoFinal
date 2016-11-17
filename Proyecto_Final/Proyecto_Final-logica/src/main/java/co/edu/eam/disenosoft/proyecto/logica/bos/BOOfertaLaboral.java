@@ -98,4 +98,13 @@ public class BOOfertaLaboral {
 	public List<OfertaLaboral> buscarOfertaPorPrograma(Programa programa) throws Exception {
 		return dao.buscarOfertaPorPrograma(programa);
 	}
+	
+	/**
+	 * Metodo responsable de editar una oferta laboral para su cierre
+	 * @param oferta la oferta que se desea editar
+	 * @throws Exception en caso de que no exista la oferta
+	 */
+	public void editarOfertaLaboral(OfertaLaboral oferta) throws Exception {
+		dao.editarOfertaLaboral(oferta);
+	}
 }

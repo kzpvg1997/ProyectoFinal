@@ -46,6 +46,9 @@ public class OfertaLaboral implements Serializable{
 	@Column(name="nombre_oferta",nullable=false,length=45)
 	private String nombreOferta;
 	
+	@Column(name="cerrar_oferta")
+	private boolean cierreOferta;
+	
 	@ManyToOne
 	@JoinColumn(name="id_empresa")
 	private Empresa idEmpresa;
@@ -102,7 +105,7 @@ public class OfertaLaboral implements Serializable{
 	 */
 	public OfertaLaboral(int idOferta, String nombreOferta, Empresa idEmpresa, Ciudad idCudad, AreaInteres idArea,
 			Programa programa, String resumen, String descripcion, String requerimientos, String cargo, double salario,
-			Date aperturaOferta) {
+			Date aperturaOferta,boolean cierreOferta) {
 		super();
 		this.idOferta = idOferta;
 		this.nombreOferta = nombreOferta;
@@ -116,6 +119,7 @@ public class OfertaLaboral implements Serializable{
 		this.cargo = cargo;
 		this.salario = salario;
 		this.aperturaOferta = aperturaOferta;
+		this.cierreOferta = cierreOferta;
 	}
 
 	/**
@@ -284,6 +288,19 @@ public class OfertaLaboral implements Serializable{
 	 */
 	public void setAperturaOferta(Date aperturaOferta) {
 		this.aperturaOferta = aperturaOferta;
+	}
+	/**
+	 * @return the cierreOferta
+	 */
+	public boolean isCierreOferta() {
+		return cierreOferta;
+	}
+
+	/**
+	 * @param cierreOferta the cierreOferta to set
+	 */
+	public void setCierreOferta(boolean cierreOferta) {
+		this.cierreOferta = cierreOferta;
 	}
 
 	/* (non-Javadoc)
