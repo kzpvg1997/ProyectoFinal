@@ -7,7 +7,6 @@ import co.edu.eam.disenosoft.proyecto.logica.bos.BOEgresado;
 import co.edu.eam.disenosoft.proyecto.logica.excepciones.ExcepcionNegocio;
 import co.edu.ingesoft.proyecto.persistencia.entidades.EducacionEgresado;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Egresado;
-import co.edu.ingesoft.proyecto.persistencia.entidades.HistorialLaboral;
 import co.edu.ingesoft.proyecto.persistencia.entidades.InfoLaboralEgresado;
 
 /**

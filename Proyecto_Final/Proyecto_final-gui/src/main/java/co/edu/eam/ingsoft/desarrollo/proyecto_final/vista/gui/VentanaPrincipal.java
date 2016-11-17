@@ -571,8 +571,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 	}// GEN-LAST:event_jBEmpleadosEmpresaActionPerformed
 
 	private void jBReportesProgramaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jBReportesProgramaActionPerformed
-		VentanaReporteEgresados reporEgre = new VentanaReporteEgresados();
-		reporEgre.setVisible(true);
+		VentanaOfertasPrograma reporOferProg = new VentanaOfertasPrograma();
+		reporOferProg.setVisible(true);
 		this.dispose();
 	}// GEN-LAST:event_jBReportesProgramaActionPerformed
 

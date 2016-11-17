@@ -24,7 +24,9 @@ import javax.persistence.Table;
 @Table(name="tb_sectorlaboral")
 public class SectorEmpresa implements Serializable{
 
-	
+	/**
+	 * Consulta encargada de traer los SectoresEmpresa registrados
+	 */
 	public static final String SECTORES_EMPRESA = "SectorEmpresa.sectores";
 	
 	

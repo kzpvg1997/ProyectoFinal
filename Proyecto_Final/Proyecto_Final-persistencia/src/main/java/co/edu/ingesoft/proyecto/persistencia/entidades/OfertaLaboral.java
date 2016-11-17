@@ -23,14 +23,21 @@ import javax.persistence.TemporalType;
  */
 @NamedQueries({
 	@NamedQuery(name=OfertaLaboral.OFERTAS,
-			query="SELECT ofr FROM OfertaLaboral ofr")
+			query="SELECT ofr FROM OfertaLaboral ofr"),
+	@NamedQuery(name=OfertaLaboral.OFERTAS_POR_PROGRAMA,
+	query="SELECT ofr FROM OfertaLaboral ofr WHERE ofr.programa=?1")
 	})
 @Entity
 @Table(name="tb_oferta_laboral")
 public class OfertaLaboral implements Serializable{
 
-	
+	/**
+	 * Consulta responsable de las Ofertas laborales
+	 */
 	public static final String OFERTAS = "OfertaLaboral.ofertas";
+	
+	
+	public static final String OFERTAS_POR_PROGRAMA = "OfertaLaboral.ofertasporprograma";
 	
 	@Id
 	@Column(name="id_oferta")

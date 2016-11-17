@@ -29,7 +29,6 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.EducacionEgresado;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Egresado;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Empresa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Facultad;
-import co.edu.ingesoft.proyecto.persistencia.entidades.HistorialLaboral;
 import co.edu.ingesoft.proyecto.persistencia.entidades.InfoLaboralEgresado;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Programa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.GeneroEnum;
@@ -55,7 +54,13 @@ public class VentanaEgresados extends javax.swing.JFrame {
 	private ControladorEducacionEgresado conEduEgre;
 	private ControladorEmpresa conEmp;
 	private int tipoSeleccion;
-	
+	/**
+	 * La ventana se cargara dependiendo del tipo (REGISTRAR(0),BUSCAR/EDITAR(1))
+	 * @param eg egresado que se desea editar
+	 * @param tipo tipo de seleccion 
+	 * @param eduEgre educacion del egresado que desea editar
+	 * @param inf informacionEgresado que desea editar
+	 */
 	public VentanaEgresados(Egresado eg,int tipo,EducacionEgresado eduEgre,InfoLaboralEgresado inf) {
 		super();
 		try {
@@ -136,6 +141,7 @@ public class VentanaEgresados extends javax.swing.JFrame {
 				    	jCBEmpresa.setSelectedItem(inf.getIdEmpresa());
 				    	jCalendarIngreso.setDate(inf.getFechaIngreso());
 				    	jCalendarSalida.setDate(inf.getFechaSalida());
+				    	jCBProgramaInfoLaboral.setSelectedItem(inf.getPrograma());
 				    	
 					}
 					
@@ -234,6 +240,8 @@ public class VentanaEgresados extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jBEditarInfoLaboral = new javax.swing.JButton();
         jCBEmpresa = new javax.swing.JComboBox();
+        jLabel31 = new javax.swing.JLabel();
+        jCBProgramaInfoLaboral = new javax.swing.JComboBox();
         jLabel37 = new javax.swing.JLabel();
         jLTitulo3 = new javax.swing.JLabel();
         jLTitulo4 = new javax.swing.JLabel();
@@ -482,22 +490,22 @@ public class VentanaEgresados extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Situacion Actual:");
-        jPInformacionAdicional.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, -1, -1));
+        jPInformacionAdicional.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
 
         jLabel22.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Tipo de Empresa:");
-        jPInformacionAdicional.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
+        jPInformacionAdicional.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
 
         jLabel24.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("ID de Egresado:");
-        jPInformacionAdicional.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
+        jPInformacionAdicional.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
 
         jLabel25.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel25.setText(" Empresa:");
-        jPInformacionAdicional.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, -1, -1));
+        jLabel25.setText("Programa academico:");
+        jPInformacionAdicional.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, -1, -1));
 
         jLabel27.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
@@ -514,9 +522,9 @@ public class VentanaEgresados extends javax.swing.JFrame {
         jLabel29.setText("Fecha de salida:");
         jPInformacionAdicional.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 160, -1, -1));
 
-        jPInformacionAdicional.add(jCBSituacionActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 260, 30));
+        jPInformacionAdicional.add(jCBSituacionActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 260, 30));
 
-        jPInformacionAdicional.add(jCBTipoEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 260, 30));
+        jPInformacionAdicional.add(jCBTipoEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 260, 30));
         jPInformacionAdicional.add(jTFSectorLaboral, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 260, 30));
         jPInformacionAdicional.add(jCalendarIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 380, 270));
         jPInformacionAdicional.add(jCalendarSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 220, 380, 270));
@@ -537,7 +545,7 @@ public class VentanaEgresados extends javax.swing.JFrame {
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("Sector Laboral:");
         jPInformacionAdicional.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, -1, -1));
-        jPInformacionAdicional.add(jTFIDEgresado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 260, 30));
+        jPInformacionAdicional.add(jTFIDEgresado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 260, 30));
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -555,7 +563,14 @@ public class VentanaEgresados extends javax.swing.JFrame {
         });
         jPInformacionAdicional.add(jBEditarInfoLaboral, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 510, 160, 40));
 
-        jPInformacionAdicional.add(jCBEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 260, 30));
+        jPInformacionAdicional.add(jCBEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 260, 30));
+
+        jLabel31.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel31.setText(" Empresa:");
+        jPInformacionAdicional.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, -1, -1));
+
+        jPInformacionAdicional.add(jCBProgramaInfoLaboral, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 260, 30));
 
         jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
         jPInformacionAdicional.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1190, 570));
@@ -615,6 +630,7 @@ public class VentanaEgresados extends javax.swing.JFrame {
     private javax.swing.JComboBox jCBGenero;
     private javax.swing.JComboBox jCBNivelEducativo;
     private javax.swing.JComboBox jCBPrograma;
+    private javax.swing.JComboBox jCBProgramaInfoLaboral;
     private javax.swing.JComboBox jCBSituacionActual;
     private javax.swing.JComboBox jCBTipoCorreo;
     private javax.swing.JComboBox jCBTipoDocumento;
@@ -651,6 +667,7 @@ public class VentanaEgresados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
@@ -681,7 +698,7 @@ public class VentanaEgresados extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTPPestanas;
     private com.toedter.calendar.JYearChooser jYCAnio;
     // End of variables declaration//GEN-END:variables
-
+    
 	private void jBSiguiente2MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jBSiguiente2MouseClicked
 
 		if (tipoSeleccion==0){
@@ -782,9 +799,6 @@ public class VentanaEgresados extends javax.swing.JFrame {
 	}// GEN-LAST:event_jBAnteriorMouseClicked
 
 
-	
-
-
 	private void jBRegistrarEgresadoActionPerformed(java.awt.event.ActionEvent evt) {
 		try {
 			
@@ -883,7 +897,10 @@ public class VentanaEgresados extends javax.swing.JFrame {
 	}// GEN-LAST:event_jBCancelarActionPerformed
 
 
-	
+	/**
+	 * metodo para hacer que la ventana en el momento de cerrarse se abra la principal
+	 * @param evt
+	 */
 	private void formWindowClosing(java.awt.event.WindowEvent evt) {// GEN-FIRST:event_formWindowClosing
 
 		VentanaPrincipal principal = new VentanaPrincipal(0);
@@ -891,7 +908,9 @@ public class VentanaEgresados extends javax.swing.JFrame {
 		this.dispose();
 
 	}// GEN-LAST:event_formWindowClosing
-
+	/**
+	 * Metodo que limpia los campos en el momento de un registro
+	 */
 	public void limpiarCamposEgresado() {
 
 		jTPPestanas.setSelectedIndex(0);
@@ -918,7 +937,10 @@ public class VentanaEgresados extends javax.swing.JFrame {
 		jTFNumeroDiploma.setText(null);
 
 	}
-
+	/**
+	 * Metodo que carga combo con Facultades
+	 * @throws Exception
+	 */
 	public void cargarComboFacultades() throws Exception {
 
 		jCBFacultad.removeAllItems();
@@ -927,16 +949,24 @@ public class VentanaEgresados extends javax.swing.JFrame {
 			jCBFacultad.addItem(lista.get(i));
 		}
 	}
-
+	/**
+	 * Metodo que carga el combo con Programas
+	 * @throws Exception
+	 */
 	public void cargarComboProgramas() throws Exception {
 
 		jCBPrograma.removeAllItems();
+		jCBProgramaInfoLaboral.removeAllItems();
 		List<Programa> lista = conProg.listarProgramas();
 		for (int i = 0; i < lista.size(); i++) {
 			jCBPrograma.addItem(lista.get(i));
+			jCBProgramaInfoLaboral.addItem(lista.get(i));
 		}
 	}
-	
+	/**
+	 * metodo que carga el combo con empresas
+	 * @throws Exception
+	 */
 	public void cargarComboEmpresas()throws Exception{
 		jCBEmpresa.removeAllItems();
 		List<Empresa> lista = conEmp.listarEmpresas();
@@ -945,6 +975,9 @@ public class VentanaEgresados extends javax.swing.JFrame {
 		}
 	}
 	
+	/**
+	 * Metodo que abarca metodos los cuales cargan los combos
+	 */
 	public void cargarCombos(){
 		GeneroEnum generos [] = GeneroEnum.values();
 		for (GeneroEnum generoEnum : generos) {
@@ -1038,6 +1071,7 @@ public class VentanaEgresados extends javax.swing.JFrame {
     	Empresa nombreEmpresa = (Empresa)jCBEmpresa.getSelectedItem();
     	Date fechaIngreso = jCalendarIngreso.getDate();
     	Date fechaSalida =jCalendarSalida.getDate();
+    	Programa programa = (Programa) jCBProgramaInfoLaboral.getSelectedItem();
     	
     	Egresado eg = conEgre.buscarEgresado(idEgresado);
     	Empresa empresa = conEmp.buscarEmpresa(nombreEmpresa.getNit());
@@ -1051,7 +1085,8 @@ public class VentanaEgresados extends javax.swing.JFrame {
 				}else{
 					
 					InfoLaboralEgresado inf =conEgre.buscarInfoLaboral(eg.getId());					
-					InfoLaboralEgresado info = new InfoLaboralEgresado(eg, situacionActual, empresa, tipoEmpresa,sectorLaboral, cargoEmpresa, fechaIngreso, fechaSalida);
+					InfoLaboralEgresado info = new InfoLaboralEgresado(eg, situacionActual, empresa, tipoEmpresa,sectorLaboral,
+							cargoEmpresa, fechaIngreso, fechaSalida,programa);
 					conEgre.registrarInfoLaboral(info);
 					JOptionPane.showMessageDialog(null, "Se ha registrado la informacion correctamente", "EXITO", JOptionPane.INFORMATION_MESSAGE);
 					limpiarInfoAdicional();
@@ -1086,6 +1121,7 @@ public class VentanaEgresados extends javax.swing.JFrame {
     	Empresa empresa = (Empresa)jCBEmpresa.getSelectedItem();
     	Date fechaIngreso = jCalendarIngreso.getDate();
     	Date fechaSalida =jCalendarSalida.getDate();
+    	Programa programa = (Programa) jCBProgramaInfoLaboral.getSelectedItem();
     	
     	if(jTFSectorLaboral.getText().isEmpty()||jTFCargoEmpresa.getText().isEmpty()||jCBEmpresa.getSelectedItem()==null){
     		
@@ -1093,7 +1129,8 @@ public class VentanaEgresados extends javax.swing.JFrame {
     	}else{
     		Egresado eg = conEgre.buscarEgresado(idEgresado);
 			
-    		InfoLaboralEgresado info = new InfoLaboralEgresado(eg, situacionActual, empresa, tipoEmpresa, sectorLabolar, cargoEmpresa, fechaIngreso, fechaSalida);   
+    		InfoLaboralEgresado info = new InfoLaboralEgresado(eg, situacionActual, empresa, tipoEmpresa, 
+    				sectorLabolar, cargoEmpresa, fechaIngreso, fechaSalida,programa);   
     		conEgre.editarInfoLaboral(info);
     		JOptionPane.showMessageDialog(null, "Se ha editado la informacion correctamente", "EXITO", JOptionPane.INFORMATION_MESSAGE);
     		

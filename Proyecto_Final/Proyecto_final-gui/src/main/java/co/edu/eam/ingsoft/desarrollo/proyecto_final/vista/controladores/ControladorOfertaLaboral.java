@@ -10,6 +10,7 @@ import co.edu.eam.disenosoft.proyecto.logica.bos.BOOfertaLaboral;
 import co.edu.ingesoft.proyecto.persistencia.entidades.OfertaAplicada;
 import co.edu.ingesoft.proyecto.persistencia.entidades.OfertaAplicadaPK;
 import co.edu.ingesoft.proyecto.persistencia.entidades.OfertaLaboral;
+import co.edu.ingesoft.proyecto.persistencia.entidades.Programa;
 
 /**
  * @author TOSHIBAP55W
@@ -46,5 +47,9 @@ public class ControladorOfertaLaboral {
 	
 	public OfertaAplicada buscarOfertaAplicada(OfertaAplicadaPK idsoferta) throws Exception {
 		return boOfer.buscarOfertaAplicada(idsoferta);
+	}
+
+	public List<OfertaLaboral> buscarOfertaPorPrograma(Programa programa) throws Exception {
+		return boOfer.buscarOfertaPorPrograma(programa);
 	}
 }

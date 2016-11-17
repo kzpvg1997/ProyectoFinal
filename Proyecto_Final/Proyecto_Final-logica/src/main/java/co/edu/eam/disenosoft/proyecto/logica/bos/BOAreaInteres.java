@@ -21,7 +21,11 @@ public class BOAreaInteres {
 	public BOAreaInteres(){
 		dao = new DAOAreasInteres();
 	}
-	
+	/**
+	 *Metodo responsable de el registro de una AreaInteres 
+	 * @param area el area que se desea crear
+	 * @throws Exception en caso de que ya este creada
+	 */
 	public void registrarAreaInteres(AreaInteres area) throws Exception {
 		
 		AreaInteres ar = dao.buscarAreaInteres(area.getIdArea());
@@ -33,12 +37,21 @@ public class BOAreaInteres {
 		}
 		
 	}
-
+	/**
+	 * Metodo responsable de buscar un AreaInteres
+	 * @param id el id del area que se desea buscar
+	 * @return el area
+	 * @throws Exception en caso de que no exista
+	 */
 	public AreaInteres buscarAreaInteres(int id) throws Exception {
 		
 		return dao.buscarAreaInteres(id);
 	}
-	
+	/**
+	 * Metodo responsable de la edicion de un AreaInteres
+	 * @param area el area que se desea editar
+	 * @throws Exception en caso de que el area no Exista
+	 */
 	public void editarAreaInteres(AreaInteres area) throws Exception {
 		
 		AreaInteres ar = dao.buscarAreaInteres(area.getIdArea());
@@ -49,7 +62,11 @@ public class BOAreaInteres {
 			throw new ExcepcionNegocio("La area de interes con ID= ''"+area.getIdArea()+"'' (NO) se encuantra registrada");
 		}
 	}
-	
+	/**
+	 * Metodo responsable de listar todas las AreasInteres
+	 * @return lista de AreasInteres
+	 * @throws Exception 
+	 */
 	public List<AreaInteres> listarTodas()throws Exception{
 		return dao.listarTodas();
 	}
