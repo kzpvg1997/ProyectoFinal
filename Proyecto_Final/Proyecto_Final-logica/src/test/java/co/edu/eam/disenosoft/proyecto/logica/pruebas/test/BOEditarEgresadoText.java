@@ -46,7 +46,7 @@ public class BOEditarEgresadoText {
 
 		try{
 			Egresado egresado = boEgresado.buscarEgresado(111);
-			Programa pro = boPrograma.buscarPrograma(3);
+			Programa pro = boPrograma.buscarPrograma(4);
 			
 			egresado.setId(111);
 			egresado.setNombre("Julian");

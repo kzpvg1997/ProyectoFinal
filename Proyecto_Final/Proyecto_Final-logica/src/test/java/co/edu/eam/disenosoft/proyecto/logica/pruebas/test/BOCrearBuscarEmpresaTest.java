@@ -35,6 +35,7 @@ public class BOCrearBuscarEmpresaTest {
 			SectorEmpresa semp = boEmpresa.buscarSectorEmpresa(3);
 			
 			Empresa emp = new Empresa();
+			emp.setNombreEmpresa("nombreHola");
 			emp.setNit(2);
 			emp.setCitioWeb("www.Hola.edu.co");
 			emp.setDireccion("Mas alla de alla");

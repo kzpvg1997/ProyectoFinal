@@ -41,8 +41,8 @@ public class BOCrearBuscarEgresadoTest {
 
 		try{
 			Egresado egresado = boEgresado.buscarEgresado(111);
-			Facultad fa = boFacultad.buscarFacultad(3);
-			Programa pro = boPrograma.buscarPrograma(3);
+			Facultad fa = boFacultad.buscarFacultad(4);
+			Programa pro = boPrograma.buscarPrograma(4);
 
 			EducacionEgresado edu = new EducacionEgresado();
 			edu.setIdEgresado(egresado);

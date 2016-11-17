@@ -31,10 +31,11 @@ public class BOEditarEmpresaText {
 	@Test
 	public void RegistrarEmpresa() throws Exception{
 		try{
-			Ciudad ciudad = boEmpresa.buscarCiudad(5);
+			Ciudad ciudad = boEmpresa.buscarCiudad(4);
 			SectorEmpresa semp = boEmpresa.buscarSectorEmpresa(3);
 			
 			Empresa emp = new Empresa();
+			emp.setNombreEmpresa("LegganPizas");
 			emp.setNit(2);
 			emp.setCitioWeb("www.leganPizza.com");
 			emp.setDireccion("Montenegro");

@@ -19,7 +19,11 @@ public class ControladorSectorEmpresa {
 	public ControladorSectorEmpresa(){
 		boEmp = new BOSectorEmpresa();
 	}
-	
+	/**
+	 * Metodo que se encarga de litar el sector empresa
+	 * @return una ista con todo el sector empresa
+	 * @throws Exception
+	 */
 	public List<SectorEmpresa> listarSectores() throws Exception {
 		return boEmp.listarSectores();
 	}
