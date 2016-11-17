@@ -1,3 +1,3 @@
-INSERT INTO proyectofinal.tb_facultad(id_facultad, nombre) VALUES (4, 'Diseñoo');
-INSERT INTO proyectofinal.tb_programa (id_programa, nombre, id_facultad) VALUES (4, 'Dise', 2);
-INSERT INTO proyectofinal.tb_egresado (documento, nombre, correo, extension, genero, numero_tel, prefijo, primer_apellido, segundo_apellido, tipo_correo, tipo_documento, tipo_telefono, id_programa) VALUES (111,'Julian','tan@hot.com',11,'MASCULINO',3114,57,'Rios','Tabares','PERSONAL','CEDULA','PERSONAL',1);
+INSERT INTO proyecto_final.tb_facultad(id_facultad, nombre) VALUES (3, 'Mecanica');
+INSERT INTO proyecto_final.tb_programa (id_programa, nombre, id_facultad) VALUES (3, 'Electrica', 3);
+INSERT INTO proyecto_final.tb_egresado (documento, nombre, correo, extension, genero, numero_tel, prefijo, primer_apellido, segundo_apellido, tipo_correo, tipo_documento, tipo_telefono, id_programa) VALUES (111,'Julian','tan@hot.com',11,'MASCULINO',3114,57,'Rios','Tabares','PERSONAL','CEDULA','PERSONAL',1);

@@ -17,7 +17,7 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.Facultad;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Programa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.NivelEducativoEnum;
 
-public class BOEgresadoTest {
+public class BOCrearBuscarEgresadoTest {
 
 
 	private BOEgresado boEgresado;
@@ -41,7 +41,7 @@ public class BOEgresadoTest {
 
 		try{
 			Egresado egresado = boEgresado.buscarEgresado(111);
-			Facultad fa = boFacultad.buscarFacultad(4);
+			Facultad fa = boFacultad.buscarFacultad(3);
 			Programa pro = boPrograma.buscarPrograma(3);
 
 			EducacionEgresado edu = new EducacionEgresado();

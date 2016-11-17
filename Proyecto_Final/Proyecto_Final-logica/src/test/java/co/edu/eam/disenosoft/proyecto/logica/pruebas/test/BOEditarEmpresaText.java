@@ -9,18 +9,18 @@ import org.junit.Test;
 
 import co.edu.eam.disenosoft.proyecto.logica.bos.BOEmpresa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Ciudad;
-import co.edu.ingesoft.proyecto.persistencia.entidades.Departamento;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Empresa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.SectorEmpresa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoEmpresaEnum;
 
-public class BOEmpresaTest {
+public class BOEditarEmpresaText {
+
 
 	private BOEmpresa boEmpresa;
 	
 	@BeforeClass
 	public static void beforeClass(){
-		TestDataUtil.ejecutarSQL("sqltest/PruebaEmpresa-add.sql");
+		TestDataUtil.ejecutarSQL("sqltest/PruebaAgregarEmpresa-add.sql");
 	}
 	
 	@Before
@@ -31,26 +31,26 @@ public class BOEmpresaTest {
 	@Test
 	public void RegistrarEmpresa() throws Exception{
 		try{
-			Ciudad ciudad = boEmpresa.buscarCiudad(4);
-			//Departamento dep = boEmpresa.buscarDepartamento(5);
+			Ciudad ciudad = boEmpresa.buscarCiudad(5);
 			SectorEmpresa semp = boEmpresa.buscarSectorEmpresa(3);
 			
 			Empresa emp = new Empresa();
 			emp.setNit(2);
-			emp.setCitioWeb("www.Hola.edu.co");
-			emp.setDireccion("Mas alla de alla");
-			emp.setFax("88");
-			emp.setRazonSocial("HL");
-			emp.setTelefono("01800");
-			emp.setTipoEmpresa(TipoEmpresaEnum.MIXTA);
+			emp.setCitioWeb("www.leganPizza.com");
+			emp.setDireccion("Montenegro");
+			emp.setFax("57");
+			emp.setRazonSocial("PizzaO");
+			emp.setTelefono("316");
+			emp.setTipoEmpresa(TipoEmpresaEnum.COOPERATIVA);
 			emp.setCiudad(ciudad);
 			emp.setSector(semp);
 			
-			boEmpresa.registrarEmpresa(emp);
+			
+			boEmpresa.editarEmpresa(emp);
 			Empresa empresa = boEmpresa.buscarEmpresa(2);
 			
 			Assert.assertNotNull(empresa);
-			Assert.assertEquals("HL" , empresa.getRazonSocial());
+			Assert.assertEquals("316" , empresa.getTelefono());
 
 		}catch(Exception e){
 			e.printStackTrace();
@@ -62,5 +62,4 @@ public class BOEmpresaTest {
 	public static void afterClass(){
 		TestDataUtil.ejecutarSQL("sqltest/PruebaEmpresa-del.sql");
 	}
-	
 }

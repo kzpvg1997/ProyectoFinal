@@ -15,9 +15,14 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.EducacionEgresado;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Egresado;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Facultad;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Programa;
+import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.GeneroEnum;
 import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.NivelEducativoEnum;
+import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoCorreoEnum;
+import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoDocumentoEnum;
+import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoTelefonoEnum;
 
-public class BOEgresadoTest {
+public class BOEditarEgresadoText {
+
 
 
 	private BOEgresado boEgresado;
@@ -41,34 +46,29 @@ public class BOEgresadoTest {
 
 		try{
 			Egresado egresado = boEgresado.buscarEgresado(111);
-			Facultad fa = boFacultad.buscarFacultad(4);
 			Programa pro = boPrograma.buscarPrograma(3);
-
-			EducacionEgresado edu = new EducacionEgresado();
-			edu.setIdEgresado(egresado);
-			edu.setFacultad(fa);
-			edu.setPrograma(pro);
-			edu.setNivelEducativo(NivelEducativoEnum.TECNOLÓGICO);
-			edu.setNivelAcademico("5");
-			edu.setAnio(2016);
-			edu.setMes(10);
-			edu.setNumeroDiploma(1);
 			
-			/**
-			 * Para editar se comenta el metodo crear,  se descomenta el metodo editar y se comenta
-			 * el @AfterClass para visualizar los cambios en la bd
-			 */
+			egresado.setId(111);
+			egresado.setNombre("Julian");
+			egresado.setCorreo("tan@hot.com");
+			egresado.setExtension(11);
+			egresado.setGenero(GeneroEnum.MASCULINO);
+			egresado.setNumeroTel(3114);
+			egresado.setPrefijo(57);
+			egresado.setPrimerApellido("RT");
+			egresado.setSegundoApellido("Tabares");
+			egresado.setTipoCorreo(TipoCorreoEnum.PERSONAL);
+			egresado.setTipoDocumento(TipoDocumentoEnum.CEDULA);
+			egresado.setTipoTel(TipoTelefonoEnum.PERSONAL);
+			egresado.setIdPrograma(pro);
 			
-			//boEducacionEgresado.editarEducaionEgresado(edu);	// Metodo para editar
-			boEducacionEgresado.crearEducacionEgresado(edu);	//Metodo para crear
+			boEgresado.editarEgresado(egresado);
 			
-			EducacionEgresado educaEgresado =  boEducacionEgresado.buscarEducacion(egresado.getId());
-
-			Assert.assertNotNull(educaEgresado);
-			Assert.assertEquals("5" , educaEgresado.getNivelAcademico());
-
+			Assert.assertNotNull(egresado);
+			Assert.assertEquals("Julian" , egresado.getNombre());
+			
 		}catch(Exception e){
-			//e.printStackTrace();
+			e.printStackTrace();
 			Assert.fail();
 			
 		}
@@ -76,7 +76,6 @@ public class BOEgresadoTest {
 	
 	@AfterClass
 	public static void afterClass(){
-		TestDataUtil.ejecutarSQL("sqltest/PruebaEgresado-del.sql");
+		TestDataUtil.ejecutarSQL("sqltest/PruebaEliminarEgresado-del.sql");
 	}
-	
 }

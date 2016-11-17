@@ -22,9 +22,12 @@ public class BOAreaInteres {
 		dao = new DAOAreasInteres();
 	}
 	/**
+
+
 	 *Metodo responsable de el registro de una AreaInteres 
 	 * @param area el area que se desea crear
 	 * @throws Exception en caso de que ya este creada
+
 	 */
 	public void registrarAreaInteres(AreaInteres area) throws Exception {
 		
