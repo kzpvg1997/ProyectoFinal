@@ -1,0 +1,1 @@
+DELETE FROM proyecto_final.tb_facultad WHERE id_facultad=3;
