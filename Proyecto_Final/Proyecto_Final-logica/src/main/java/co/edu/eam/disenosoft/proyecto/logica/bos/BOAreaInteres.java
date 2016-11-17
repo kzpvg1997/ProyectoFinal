@@ -20,7 +20,7 @@ public class BOAreaInteres {
 		dao = new DAOAreasInteres();
 	}
 	/**
-	 * Metodo para registar un area de interes
+	 * Metodo para registar un area de interes bitch please
 	 * @param area parametro que se va usar
 	 * @throws Exception
 	 */
