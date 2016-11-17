@@ -27,7 +27,10 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoEmpresa
 	@NamedQuery(name=Empresa.CIUDADES_EMPRESA,
 			query="SELECT ci FROM Ciudad ci "),
 	@NamedQuery(name=Empresa.DEPARTAMENTOS_EMPRESA,
-	query="SELECT dep FROM Departamento dep")
+	query="SELECT dep FROM Departamento dep"),
+	
+	@NamedQuery(name=Empresa.EMPRESAS,
+	query="SELECT emp FROM Empresa emp")
 	})
 @Entity
 @Table(name="tb_empresa")
@@ -37,9 +40,14 @@ public class Empresa implements Serializable{
 	
 	public static final String DEPARTAMENTOS_EMPRESA = "Empresa.departamentos";
 	
+	public static final String EMPRESAS = "Empresa.empresas";
+	
 	@Id
 	@Column(name="id_empresa")
 	private int nit;
+	
+	@Column(name="nombre_empresa",nullable=false,length=50)
+	private String nombreEmpresa;
 	
 	@ManyToOne
 	@JoinColumn(name="id_sector")
@@ -91,7 +99,7 @@ public class Empresa implements Serializable{
 	 * @param citioWeb
 	 */
 	public Empresa(int nit, SectorEmpresa sector, Ciudad ciudad, String razonSocial, TipoEmpresaEnum tipoEmpresa,
-			Departamento departamento, String direccion, String telefono, String fax, String citioWeb) {
+			Departamento departamento, String direccion, String telefono, String fax, String citioWeb,String nombreEmpresa) {
 		super();
 		this.nit = nit;
 		this.sector = sector;
@@ -103,6 +111,7 @@ public class Empresa implements Serializable{
 		this.telefono = telefono;
 		this.fax = fax;
 		this.citioWeb = citioWeb;
+		this.nombreEmpresa=nombreEmpresa;
 	}
 
 
@@ -265,5 +274,32 @@ public class Empresa implements Serializable{
 		this.citioWeb = citioWeb;
 	}
 
+	/**
+	 * @return the nombreEmpresa
+	 */
+	public String getNombreEmpresa() {
+		return nombreEmpresa;
+	}
+
+
+	/**
+	 * @param nombreEmpresa the nombreEmpresa to set
+	 */
+	public void setNombreEmpresa(String nombreEmpresa) {
+		this.nombreEmpresa = nombreEmpresa;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return nombreEmpresa;
+	}
+	
+	
+	
+	
 	
 }

@@ -26,4 +26,8 @@ public class ControladorAreaInteres {
 	public AreaInteres buscarAreaInteres(int id) throws Exception {
 		return boArea.buscarAreaInteres(id);
 	}
+	
+	public void editarAreaInteres(AreaInteres area) throws Exception {
+		boArea.editarAreaInteres(area);
+	}
 }

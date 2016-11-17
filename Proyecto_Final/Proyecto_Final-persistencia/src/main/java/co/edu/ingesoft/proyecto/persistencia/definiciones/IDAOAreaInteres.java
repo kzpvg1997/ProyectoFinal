@@ -15,4 +15,5 @@ public interface IDAOAreaInteres {
 	
 	public AreaInteres buscarAreaInteres (int id)throws Exception;
 	
+	public void editarAreaInteres (AreaInteres area)throws Exception;
 }

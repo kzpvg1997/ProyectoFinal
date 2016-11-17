@@ -22,16 +22,17 @@ import javax.swing.JOptionPane;
 import co.edu.eam.disenosoft.proyecto.logica.excepciones.ExcepcionNegocio;
 import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorEducacionEgresado;
 import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorEgresado;
+import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorEmpresa;
 import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorFacultad;
 import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorPrograma;
 import co.edu.ingesoft.proyecto.persistencia.entidades.EducacionEgresado;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Egresado;
+import co.edu.ingesoft.proyecto.persistencia.entidades.Empresa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Facultad;
 import co.edu.ingesoft.proyecto.persistencia.entidades.InfoLaboralEgresado;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Programa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.GeneroEnum;
 import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.NivelEducativoEnum;
-import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.SectorLaboralEnum;
 import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.SituacionActualEnum;
 import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoCorreoEnum;
 import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoDocumentoEnum;
@@ -51,6 +52,7 @@ public class VentanaEgresados extends javax.swing.JFrame {
 	private ControladorEgresado conEgre;
 	private ControladorPrograma conProg;
 	private ControladorEducacionEgresado conEduEgre;
+	private ControladorEmpresa conEmp;
 	private int tipoSeleccion;
 	
 	public VentanaEgresados(Egresado eg,int tipo,EducacionEgresado eduEgre,InfoLaboralEgresado inf) {
@@ -69,9 +71,11 @@ public class VentanaEgresados extends javax.swing.JFrame {
 				conEgre = new ControladorEgresado();
 				conProg = new ControladorPrograma();
 				conEduEgre = new ControladorEducacionEgresado();
+				conEmp = new ControladorEmpresa();
 				cargarCombos();
 				cargarComboFacultades();
 				cargarComboProgramas();
+				cargarComboEmpresas();
 				jBEditarEgresado.setEnabled(false);
 				jBEditarInfoLaboral.setEnabled(false);
 				jTFPrefijo.setText("00");
@@ -87,10 +91,12 @@ public class VentanaEgresados extends javax.swing.JFrame {
 					conFac = new ControladorFacultad();
 					conEgre = new ControladorEgresado();
 					conProg = new ControladorPrograma();
+					conEmp = new ControladorEmpresa();
 					conEduEgre = new ControladorEducacionEgresado();
 					cargarCombos();
 					cargarComboFacultades();
 					cargarComboProgramas();
+					cargarComboEmpresas();
 					jBEditarEgresado.setEnabled(true);
 					jBRegistrarEgresado.setEnabled(false);
 					jBRegistrarInformacionAdicional.setEnabled(false);
@@ -126,12 +132,13 @@ public class VentanaEgresados extends javax.swing.JFrame {
 				    	jTFCargoEmpresa.setText(inf.getCargoEmpresa());
 				    	jCBSituacionActual.setSelectedItem(inf.getSituacionActual());
 				    	jCBTipoEmpresa.setSelectedItem(inf.getTipoempresa());
-				    	jTFNombreEmpresa.setText(inf.getNombreEmpresa());
+				    	jCBEmpresa.setSelectedItem(inf.getIdEmpresa());
 				    	jCalendarIngreso.setDate(inf.getFechaIngreso());
 				    	jCalendarSalida.setDate(inf.getFechaSalida());
+				    	
 					}
 					
-
+					
 				}
 				
 		}catch (Exception e) {
@@ -217,7 +224,6 @@ public class VentanaEgresados extends javax.swing.JFrame {
         jCBSituacionActual = new javax.swing.JComboBox();
         jCBTipoEmpresa = new javax.swing.JComboBox();
         jTFSectorLaboral = new javax.swing.JTextField();
-        jTFNombreEmpresa = new javax.swing.JTextField();
         jCalendarIngreso = new com.toedter.calendar.JCalendar();
         jCalendarSalida = new com.toedter.calendar.JCalendar();
         jTFCargoEmpresa = new javax.swing.JTextField();
@@ -226,6 +232,7 @@ public class VentanaEgresados extends javax.swing.JFrame {
         jTFIDEgresado = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jBEditarInfoLaboral = new javax.swing.JButton();
+        jCBEmpresa = new javax.swing.JComboBox();
         jLabel37 = new javax.swing.JLabel();
         jLTitulo3 = new javax.swing.JLabel();
         jLTitulo4 = new javax.swing.JLabel();
@@ -488,8 +495,8 @@ public class VentanaEgresados extends javax.swing.JFrame {
 
         jLabel25.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel25.setText("Nombre de la Empresa:");
-        jPInformacionAdicional.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, -1, -1));
+        jLabel25.setText(" Empresa:");
+        jPInformacionAdicional.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, -1, -1));
 
         jLabel27.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
@@ -508,9 +515,8 @@ public class VentanaEgresados extends javax.swing.JFrame {
 
         jPInformacionAdicional.add(jCBSituacionActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 260, 30));
 
-        jPInformacionAdicional.add(jCBTipoEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 260, 30));
+        jPInformacionAdicional.add(jCBTipoEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 260, 30));
         jPInformacionAdicional.add(jTFSectorLaboral, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 260, 30));
-        jPInformacionAdicional.add(jTFNombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 270, 30));
         jPInformacionAdicional.add(jCalendarIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 380, 270));
         jPInformacionAdicional.add(jCalendarSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 220, 380, 270));
         jPInformacionAdicional.add(jTFCargoEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 100, 260, 30));
@@ -547,6 +553,8 @@ public class VentanaEgresados extends javax.swing.JFrame {
             }
         });
         jPInformacionAdicional.add(jBEditarInfoLaboral, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 510, 160, 40));
+
+        jPInformacionAdicional.add(jCBEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 260, 30));
 
         jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
         jPInformacionAdicional.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1190, 570));
@@ -601,6 +609,7 @@ public class VentanaEgresados extends javax.swing.JFrame {
     private javax.swing.JButton jBRegistrarEgresado;
     private javax.swing.JButton jBRegistrarInformacionAdicional;
     private javax.swing.JButton jBSiguiente;
+    private javax.swing.JComboBox jCBEmpresa;
     private javax.swing.JComboBox jCBFacultad;
     private javax.swing.JComboBox jCBGenero;
     private javax.swing.JComboBox jCBNivelEducativo;
@@ -660,7 +669,6 @@ public class VentanaEgresados extends javax.swing.JFrame {
     private javax.swing.JTextField jTFExtension;
     private javax.swing.JTextField jTFIDEgresado;
     private javax.swing.JTextField jTFNivelAcademico;
-    private javax.swing.JTextField jTFNombreEmpresa;
     private javax.swing.JTextField jTFNombres;
     private javax.swing.JTextField jTFNumero;
     private javax.swing.JTextField jTFNumeroDiploma;
@@ -928,6 +936,14 @@ public class VentanaEgresados extends javax.swing.JFrame {
 		}
 	}
 	
+	public void cargarComboEmpresas()throws Exception{
+		jCBEmpresa.removeAllItems();
+		List<Empresa> lista = conEmp.listarEmpresas();
+		for (int i = 0; i < lista.size(); i++) {
+			jCBEmpresa.addItem(lista.get(i));
+		}
+	}
+	
 	public void cargarCombos(){
 		GeneroEnum generos [] = GeneroEnum.values();
 		for (GeneroEnum generoEnum : generos) {
@@ -1014,27 +1030,27 @@ public class VentanaEgresados extends javax.swing.JFrame {
     private void jBRegistrarInformacionAdicionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistrarInformacionAdicionalActionPerformed
     	try {
     	int idEgresado =Integer.parseInt(jTFIDEgresado.getText());
-    	String sectorLabolar = jTFSectorLaboral.getText();
+    	String sectorLaboral = jTFSectorLaboral.getText();
     	String cargoEmpresa = jTFCargoEmpresa.getText();
     	SituacionActualEnum situacionActual = (SituacionActualEnum)jCBSituacionActual.getSelectedItem();
     	TipoEmpresaEnum tipoEmpresa = (TipoEmpresaEnum) jCBTipoEmpresa.getSelectedItem();
-    	String nombreEmpresa = jTFNombreEmpresa.getText();
+    	Empresa nombreEmpresa = (Empresa)jCBEmpresa.getSelectedItem();
     	Date fechaIngreso = jCalendarIngreso.getDate();
     	Date fechaSalida =jCalendarSalida.getDate();
     	
     	Egresado eg = conEgre.buscarEgresado(idEgresado);
+    	Empresa empresa = conEmp.buscarEmpresa(nombreEmpresa.getNit());
 			if(eg!=null){
 				if(jTFIDEgresado.getText().length()>=11){
 					JOptionPane.showMessageDialog(null, "La identificacion del egresado es demasiado extensa (NO VALIDA)", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 				if(jTFIDEgresado.getText().isEmpty()||jTFSectorLaboral.getText().isEmpty()||jTFCargoEmpresa.getText().isEmpty()
-						||jTFNombreEmpresa.getText().isEmpty()){
+						||jCBEmpresa.getSelectedItem()==null){
 					JOptionPane.showMessageDialog(null, "Por favor llene todos los campos", "INGRESE", JOptionPane.ERROR_MESSAGE);
 				}else{
 					
 					InfoLaboralEgresado inf =conEgre.buscarInfoLaboral(eg.getId());					
-					InfoLaboralEgresado info = new InfoLaboralEgresado(eg, situacionActual, tipoEmpresa, sectorLabolar,
-					nombreEmpresa, cargoEmpresa, fechaIngreso, fechaSalida);
+					InfoLaboralEgresado info = new InfoLaboralEgresado(eg, situacionActual, empresa, tipoEmpresa,sectorLaboral, cargoEmpresa, fechaIngreso, fechaSalida);
 					conEgre.registrarInfoLaboral(info);
 					JOptionPane.showMessageDialog(null, "Se ha registrado la informacion correctamente", "EXITO", JOptionPane.INFORMATION_MESSAGE);
 					limpiarInfoAdicional();
@@ -1066,18 +1082,17 @@ public class VentanaEgresados extends javax.swing.JFrame {
     	String cargoEmpresa = jTFCargoEmpresa.getText();
     	SituacionActualEnum situacionActual = (SituacionActualEnum)jCBSituacionActual.getSelectedItem();
     	TipoEmpresaEnum tipoEmpresa = (TipoEmpresaEnum) jCBTipoEmpresa.getSelectedItem();
-    	String nombreEmpresa = jTFNombreEmpresa.getText();
+    	Empresa empresa = (Empresa)jCBEmpresa.getSelectedItem();
     	Date fechaIngreso = jCalendarIngreso.getDate();
     	Date fechaSalida =jCalendarSalida.getDate();
     	
-    	if(jTFSectorLaboral.getText().isEmpty()||jTFCargoEmpresa.getText().isEmpty()||jTFNombreEmpresa.getText().isEmpty()){
+    	if(jTFSectorLaboral.getText().isEmpty()||jTFCargoEmpresa.getText().isEmpty()||jCBEmpresa.getSelectedItem()==null){
     		
     		JOptionPane.showMessageDialog(null, "Ingrese todos los datos", "INGRESE", JOptionPane.ERROR_MESSAGE);
     	}else{
     		Egresado eg = conEgre.buscarEgresado(idEgresado);
 			
-    		InfoLaboralEgresado info = new InfoLaboralEgresado(eg, situacionActual, tipoEmpresa, sectorLabolar,
-			nombreEmpresa, cargoEmpresa, fechaIngreso, fechaSalida);   
+    		InfoLaboralEgresado info = new InfoLaboralEgresado(eg, situacionActual, empresa, tipoEmpresa, sectorLabolar, cargoEmpresa, fechaIngreso, fechaSalida);   
     		conEgre.editarInfoLaboral(info);
     		JOptionPane.showMessageDialog(null, "Se ha editado la informacion correctamente", "EXITO", JOptionPane.INFORMATION_MESSAGE);
     		
@@ -1099,9 +1114,10 @@ public class VentanaEgresados extends javax.swing.JFrame {
     	jTFCargoEmpresa.setText(null);
     	jCBSituacionActual.setSelectedIndex(0);
     	jCBTipoEmpresa.setSelectedIndex(0);
-    	jTFNombreEmpresa.setText(null);
+    	jCBEmpresa.setSelectedIndex(0);
     	jCalendarIngreso.setDate(new Date());
     	jCalendarSalida.setDate(new Date());
+    	jCBEmpresa.setSelectedIndex(0);
     	
     }
 

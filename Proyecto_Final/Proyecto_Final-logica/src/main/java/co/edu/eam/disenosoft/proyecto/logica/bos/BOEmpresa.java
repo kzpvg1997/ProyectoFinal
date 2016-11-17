@@ -89,4 +89,8 @@ public class BOEmpresa {
 			throw new ExcepcionNegocio("Este sector empresarial con id  ''"+id+"'' (NO) se encuentra registrado");
 		}
 	}
+	
+	public List<Empresa> listarEmpresas() throws Exception {
+		return dao.listarEmpresas();
+	}
 }

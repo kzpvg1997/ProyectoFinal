@@ -32,4 +32,8 @@ public class ControladorPrograma {
 	public void registrarPrograma(Programa programa) throws Exception {
 		boProg.registrarPrograma(programa);
 	}
+	
+	public void editarPrograma(Programa programa) throws Exception {
+		boProg.editarPrograma(programa);
+	}
 }

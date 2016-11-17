@@ -12,6 +12,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -37,6 +38,10 @@ public class InfoLaboralEgresado implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private SituacionActualEnum situacionActual;
 	
+	@ManyToOne
+	@JoinColumn(name="id_empresa")
+	private Empresa idEmpresa;
+	
 	@Column(name="tipo_empresa",length=50)
 	@Enumerated(EnumType.STRING)
 	private TipoEmpresaEnum tipoempresa;
@@ -44,8 +49,6 @@ public class InfoLaboralEgresado implements Serializable{
 	@Column(name="sector_laboral",length=50)
 	private String sectorLaboral;
 	
-	@Column(name="nombre_empresa",length=50)
-	private String nombreEmpresa;
 	
 	@Column(name="cargo_empresa",length=50)
 	private String cargoEmpresa;
@@ -67,25 +70,27 @@ public class InfoLaboralEgresado implements Serializable{
 	/**
 	 * @param idEgresado
 	 * @param situacionActual
+	 * @param idEmpresa
 	 * @param tipoempresa
 	 * @param sectorLaboral
-	 * @param nombreEmpresa
 	 * @param cargoEmpresa
 	 * @param fechaIngreso
 	 * @param fechaSalida
 	 */
-	public InfoLaboralEgresado(Egresado idEgresado, SituacionActualEnum situacionActual, TipoEmpresaEnum tipoempresa,
-			String sectorLaboral, String nombreEmpresa, String cargoEmpresa, Date fechaIngreso, Date fechaSalida) {
+	public InfoLaboralEgresado(Egresado idEgresado, SituacionActualEnum situacionActual, Empresa idEmpresa,
+			TipoEmpresaEnum tipoempresa, String sectorLaboral, String cargoEmpresa, Date fechaIngreso,
+			Date fechaSalida) {
 		super();
 		this.idEgresado = idEgresado;
 		this.situacionActual = situacionActual;
+		this.idEmpresa = idEmpresa;
 		this.tipoempresa = tipoempresa;
 		this.sectorLaboral = sectorLaboral;
-		this.nombreEmpresa = nombreEmpresa;
 		this.cargoEmpresa = cargoEmpresa;
 		this.fechaIngreso = fechaIngreso;
 		this.fechaSalida = fechaSalida;
 	}
+
 
 
 	/**
@@ -153,22 +158,6 @@ public class InfoLaboralEgresado implements Serializable{
 
 
 	/**
-	 * @return the nombreEmpresa
-	 */
-	public String getNombreEmpresa() {
-		return nombreEmpresa;
-	}
-
-
-	/**
-	 * @param nombreEmpresa the nombreEmpresa to set
-	 */
-	public void setNombreEmpresa(String nombreEmpresa) {
-		this.nombreEmpresa = nombreEmpresa;
-	}
-
-
-	/**
 	 * @return the cargoEmpresa
 	 */
 	public String getCargoEmpresa() {
@@ -214,6 +203,23 @@ public class InfoLaboralEgresado implements Serializable{
 	public void setFechaSalida(Date fechaSalida) {
 		this.fechaSalida = fechaSalida;
 	}
+
+
+	/**
+	 * @return the idEmpresa
+	 */
+	public Empresa getIdEmpresa() {
+		return idEmpresa;
+	}
+
+
+	/**
+	 * @param idEmpresa the idEmpresa to set
+	 */
+	public void setIdEmpresa(Empresa idEmpresa) {
+		this.idEmpresa = idEmpresa;
+	}
+
 	
 	
 }

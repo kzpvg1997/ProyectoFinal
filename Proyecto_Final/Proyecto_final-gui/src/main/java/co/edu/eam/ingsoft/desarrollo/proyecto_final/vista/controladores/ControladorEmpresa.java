@@ -41,4 +41,8 @@ public class ControladorEmpresa {
 	public void editarEmpresa(Empresa emp) throws Exception {
 		boEmp.editarEmpresa(emp);
 	}
+	
+	public List<Empresa> listarEmpresas() throws Exception {
+		return boEmp.listarEmpresas();
+	}
 }

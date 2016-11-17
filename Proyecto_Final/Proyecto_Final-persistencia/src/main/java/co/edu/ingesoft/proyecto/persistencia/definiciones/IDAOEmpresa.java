@@ -21,6 +21,8 @@ public interface IDAOEmpresa {
 	
 	public List<Departamento> listarDepartamentos() throws Exception;
 	
+	public List<Empresa> listarEmpresas()throws Exception;
+	
 	public void registrarEmpresa (Empresa emp)throws Exception;
 	
 	public Empresa buscarEmpresa (int nit)throws Exception;

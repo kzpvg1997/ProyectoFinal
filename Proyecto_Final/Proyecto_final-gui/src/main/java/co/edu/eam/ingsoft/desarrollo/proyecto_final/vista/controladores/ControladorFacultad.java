@@ -32,4 +32,8 @@ public class ControladorFacultad {
 	public void registrarFacultad(Facultad facultad) throws Exception {
 	boFac.registrarFacultad(facultad);	
 	}
+	
+	public void editarFacultad(Facultad facultad) throws Exception {
+		boFac.editarFacultad(facultad);
+	}
 }

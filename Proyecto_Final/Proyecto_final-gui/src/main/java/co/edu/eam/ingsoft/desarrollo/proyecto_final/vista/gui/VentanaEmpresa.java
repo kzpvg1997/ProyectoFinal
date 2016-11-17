@@ -72,6 +72,7 @@ public class VentanaEmpresa extends javax.swing.JFrame {
 			/*Datos Empresa*/
 			jTFRazonSocial.setText(emp.getRazonSocial());
 			jTFNit.setText(emp.getNit()+"");
+			jTFNombreEmpresa.setText(emp.getNombreEmpresa());
 			jCBTipoEmpresa.setSelectedItem(emp.getTipoEmpresa());
 			jCBSectorLaboral.setSelectedItem(emp.getSector());
 			jCBCiudad.setSelectedItem(emp.getCiudad());
@@ -135,7 +136,9 @@ public class VentanaEmpresa extends javax.swing.JFrame {
         jCBSectorLaboral = new javax.swing.JComboBox();
         jBCancelar = new javax.swing.JButton();
         jBSiguiente = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jTFNombreEmpresa = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jTFCorreoContacto = new javax.swing.JTextField();
@@ -150,41 +153,6 @@ public class VentanaEmpresa extends javax.swing.JFrame {
         jBRegistrarEmpresa = new javax.swing.JButton();
         jBEditarmpresa = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTAResumen = new javax.swing.JTextArea();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jTFAreaConocimiento = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        jTFCargoOfrecer = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
-        jTFCiudadOfert = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel27 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel28 = new javax.swing.JLabel();
-        jTFSalario = new javax.swing.JTextField();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTADescripcion = new javax.swing.JTextArea();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTARequerimientos = new javax.swing.JTextArea();
-        jLabel31 = new javax.swing.JLabel();
-        jCalendarAperturaOfert = new com.toedter.calendar.JCalendar();
-        jButton2 = new javax.swing.JButton();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
         jBInicio = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -238,10 +206,10 @@ public class VentanaEmpresa extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Direccion:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, -1, -1));
+        jLabel4.setText("Nombre de empresa:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
 
-        jPanel1.add(jCBDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 250, 33));
+        jPanel1.add(jCBDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, 250, 33));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -253,7 +221,7 @@ public class VentanaEmpresa extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("FAX:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, -1, -1));
-        jPanel1.add(jTFDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 310, 33));
+        jPanel1.add(jTFDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 310, 33));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -270,14 +238,14 @@ public class VentanaEmpresa extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Ciudad:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, -1, -1));
 
-        jPanel1.add(jCBCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 250, 33));
+        jPanel1.add(jCBCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 250, 33));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Departamento:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, -1, -1));
 
         jPanel1.add(jCBTipoEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 290, 33));
 
@@ -321,8 +289,14 @@ public class VentanaEmpresa extends javax.swing.JFrame {
         });
         jPanel1.add(jBSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 500, 180, 40));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1110, 570));
+        jLabel19.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("Direccion:");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
+        jPanel1.add(jTFNombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 310, 33));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1110, 570));
 
         jTPPestanasEmpresa.addTab("1.Datos de la Empresa", jPanel1);
 
@@ -404,125 +378,6 @@ public class VentanaEmpresa extends javax.swing.JFrame {
 
         jTPPestanasEmpresa.addTab("2.Datos de Contacto", jPanel2);
 
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTAResumen.setColumns(20);
-        jTAResumen.setRows(5);
-        jScrollPane1.setViewportView(jTAResumen);
-
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 310, 160));
-
-        jLabel19.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("Area de Conocimiento:");
-        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
-
-        jLabel20.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setText("Resumen:");
-        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
-        jPanel3.add(jTFAreaConocimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, 310, 40));
-
-        jLabel21.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("Cargo a Ofrecer:");
-        jPanel3.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 80, -1, -1));
-        jPanel3.add(jTFCargoOfrecer, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 310, 40));
-
-        jLabel24.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText("Ciudad de la oferta:");
-        jPanel3.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 200, -1, -1));
-        jPanel3.add(jTFCiudadOfert, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 250, 310, 40));
-
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
-
-        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 310, 160));
-
-        jLabel25.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel25.setText("Area de Conocimiento:");
-        jPanel4.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
-
-        jLabel26.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel26.setText("Resumen:");
-        jPanel4.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
-        jPanel4.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, 310, 40));
-
-        jLabel27.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel27.setText("Cargo a Ofrecer:");
-        jPanel4.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 80, -1, -1));
-        jPanel4.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 310, 40));
-
-        jLabel28.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setText("Salario:");
-        jPanel4.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, -1, -1));
-        jPanel4.add(jTFSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 310, 40));
-
-        jTADescripcion.setColumns(20);
-        jTADescripcion.setRows(5);
-        jScrollPane4.setViewportView(jTADescripcion);
-
-        jPanel4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 310, 140));
-
-        jLabel29.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel29.setText("Descripcion de la Oferta:");
-        jPanel4.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, -1));
-
-        jLabel30.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel30.setText("Ciudad de la oferta:");
-        jPanel4.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 200, -1, -1));
-        jPanel4.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 250, 310, 40));
-
-        jLabel22.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setText("Apertura de la oferta:");
-        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 310, -1, -1));
-
-        jTARequerimientos.setColumns(20);
-        jTARequerimientos.setRows(5);
-        jScrollPane2.setViewportView(jTARequerimientos);
-
-        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, 310, 140));
-
-        jLabel31.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel31.setText("Requerimientos de la oferta:");
-        jPanel4.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, -1, -1));
-        jPanel4.add(jCalendarAperturaOfert, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 370, -1, -1));
-
-        jButton2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 0, 0));
-        jButton2.setText("< REGISTRAR >");
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 190, 40));
-
-        jLabel23.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText("Descripcion de la Oferta:");
-        jPanel4.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, -1));
-
-        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
-        jPanel4.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1110, 570));
-
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 570));
-
-        jTextArea5.setColumns(20);
-        jTextArea5.setRows(5);
-        jScrollPane5.setViewportView(jTextArea5);
-
-        jPanel3.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 310, 160));
-
-        jTPPestanasEmpresa.addTab("Bolsa de Empleo", jPanel3);
-
         getContentPane().add(jTPPestanasEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 1110, 610));
 
         jBInicio.setBackground(new java.awt.Color(255, 255, 255));
@@ -550,12 +405,10 @@ public class VentanaEmpresa extends javax.swing.JFrame {
     private javax.swing.JButton jBInicio;
     private javax.swing.JButton jBRegistrarEmpresa;
     private javax.swing.JButton jBSiguiente;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jCBCiudad;
     private javax.swing.JComboBox jCBDepartamento;
     private javax.swing.JComboBox jCBSectorLaboral;
     private javax.swing.JComboBox jCBTipoEmpresa;
-    private com.toedter.calendar.JCalendar jCalendarAperturaOfert;
     private javax.swing.JLabel jLPaso;
     private javax.swing.JLabel jLTitulo1;
     private javax.swing.JLabel jLTitulo2;
@@ -565,7 +418,6 @@ public class VentanaEmpresa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -574,19 +426,7 @@ public class VentanaEmpresa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -595,36 +435,18 @@ public class VentanaEmpresa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextArea jTADescripcion;
-    private javax.swing.JTextArea jTARequerimientos;
-    private javax.swing.JTextArea jTAResumen;
-    private javax.swing.JTextField jTFAreaConocimiento;
     private javax.swing.JTextField jTFCargoContacto;
-    private javax.swing.JTextField jTFCargoOfrecer;
-    private javax.swing.JTextField jTFCiudadOfert;
     private javax.swing.JTextField jTFCorreoContacto;
     private javax.swing.JTextField jTFDireccion;
     private javax.swing.JTextField jTFFax;
     private javax.swing.JTextField jTFNit;
     private javax.swing.JTextField jTFNombreContacto;
+    private javax.swing.JTextField jTFNombreEmpresa;
     private javax.swing.JTextField jTFRazonSocial;
-    private javax.swing.JTextField jTFSalario;
     private javax.swing.JTextField jTFSitioWeb;
     private javax.swing.JTextField jTFTelefono;
     private javax.swing.JTextField jTFTelefonoContacto;
     private javax.swing.JTabbedPane jTPPestanasEmpresa;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea5;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 
 
@@ -710,6 +532,7 @@ public class VentanaEmpresa extends javax.swing.JFrame {
        try{
     	/*Datos de la empresa*/
     	 String razonSocial = jTFRazonSocial.getText();
+    	 String nombreEmpresa = jTFNombreEmpresa.getText();
 		int nit = Integer.parseInt(jTFNit.getText());
 		TipoEmpresaEnum tipoEmpresa = (TipoEmpresaEnum)jCBTipoEmpresa.getSelectedItem();
 		SectorEmpresa sectorLaboral = (SectorEmpresa)jCBSectorLaboral.getSelectedItem();
@@ -725,15 +548,17 @@ public class VentanaEmpresa extends javax.swing.JFrame {
 		String correoContact = jTFCorreoContacto.getText();
 		String telefonoContact =jTFTelefonoContacto.getText();
 		
-		if(jTFNombreContacto.getText().isEmpty()||jTFCargoContacto.getText().isEmpty()||jTFCorreoContacto.getText().isEmpty()||jTFTelefonoContacto.getText().isEmpty()){
+		if(jTFNombreContacto.getText().isEmpty()||jTFCargoContacto.getText().isEmpty()||jTFCorreoContacto.getText().isEmpty()||
+				jTFTelefonoContacto.getText().isEmpty()||jTFNombreEmpresa.getText().isEmpty()){
 			JOptionPane.showMessageDialog(null, "Por favor ingrese todos los datos","INGRESE",JOptionPane.WARNING_MESSAGE);
 		}else{
 			Empresa emp = new Empresa(nit, sectorLaboral, ciudad, razonSocial, tipoEmpresa, departamento, direccion,
-					telefono, fax, sitioWeb);
+					telefono, fax, sitioWeb,nombreEmpresa);
 			conEmp.registrarEmpresa(emp);
 			Contacto contacto = new Contacto(emp, nombreContact, cargoContac, correoContact, telefonoContact);
 			conContac.registrarContacto(contacto);
 			JOptionPane.showMessageDialog(null, "Se ha registrado exitosamente","EXITO",JOptionPane.INFORMATION_MESSAGE);
+			jTPPestanasEmpresa.setSelectedIndex(0);
 			limpiarCampos();
 		}
 			
@@ -753,6 +578,7 @@ public class VentanaEmpresa extends javax.swing.JFrame {
     	 try{
     	    	/*Datos de la empresa*/
     	    	 String razonSocial = jTFRazonSocial.getText();
+    	    	 String nombreEmpresa = jTFNombreEmpresa.getText();
     			int nit = Integer.parseInt(jTFNit.getText());
     			TipoEmpresaEnum tipoEmpresa = (TipoEmpresaEnum)jCBTipoEmpresa.getSelectedItem();
     			SectorEmpresa sectorLaboral = (SectorEmpresa)jCBSectorLaboral.getSelectedItem();
@@ -768,11 +594,12 @@ public class VentanaEmpresa extends javax.swing.JFrame {
     			String correoContact = jTFCorreoContacto.getText();
     			String telefonoContact =jTFTelefonoContacto.getText();
     			
-    			if(jTFNombreContacto.getText().isEmpty()||jTFCargoContacto.getText().isEmpty()||jTFCorreoContacto.getText().isEmpty()||jTFTelefonoContacto.getText().isEmpty()){
+    			if(jTFNombreContacto.getText().isEmpty()||jTFCargoContacto.getText().isEmpty()||jTFCorreoContacto.getText().isEmpty()||
+    					jTFTelefonoContacto.getText().isEmpty()||jTFNombreEmpresa.getText().isEmpty()){
     				JOptionPane.showMessageDialog(null, "Por favor ingrese todos los datos","INGRESE",JOptionPane.WARNING_MESSAGE);
     			}else{
     				Empresa emp = new Empresa(nit, sectorLaboral, ciudad, razonSocial, tipoEmpresa, departamento, direccion,
-    						telefono, fax, sitioWeb);
+    						telefono, fax, sitioWeb,nombreEmpresa);
     				conEmp.editarEmpresa(emp);
     				Contacto contacto = new Contacto(emp, nombreContact, cargoContac, correoContact, telefonoContact);
     				conContac.editarContacto(contacto);
@@ -834,6 +661,7 @@ public class VentanaEmpresa extends javax.swing.JFrame {
 		
 		/*Datos Empresa*/
 		jTFRazonSocial.setText(null);
+		jTFNombreEmpresa.setText(null);
 		jTFNit.setText(null);
 		jCBTipoEmpresa.setSelectedIndex(0);
 		jCBSectorLaboral.setSelectedIndex(0);

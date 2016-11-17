@@ -70,4 +70,11 @@ public class DAOEmpresa implements IDAOEmpresa{
 		EntityManager em = AdministradorEntityManager.getEntityManager();
 		return em.find(SectorEmpresa.class, id);
 	}
+
+	public List<Empresa> listarEmpresas() throws Exception {
+		EntityManager em = AdministradorEntityManager.getEntityManager();
+		Query q = em.createNamedQuery(Empresa.EMPRESAS);
+		List<Empresa> empresas = q.getResultList();
+		return empresas;
+	}
 }

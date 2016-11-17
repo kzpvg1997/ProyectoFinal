@@ -27,4 +27,11 @@ public class DAOAreasInteres implements IDAOAreaInteres{
 		return em.find(AreaInteres.class, id);
 	}
 
+	public void editarAreaInteres(AreaInteres area) throws Exception {
+		EntityManager em = AdministradorEntityManager.getEntityManager();
+		em.getTransaction().begin();
+		em.merge(area);
+		em.getTransaction().commit();	
+	}
+
 }
