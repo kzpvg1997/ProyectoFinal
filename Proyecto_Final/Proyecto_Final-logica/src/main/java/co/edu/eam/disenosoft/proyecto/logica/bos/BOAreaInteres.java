@@ -19,7 +19,11 @@ public class BOAreaInteres {
 	public BOAreaInteres(){
 		dao = new DAOAreasInteres();
 	}
-	
+	/**
+	 * Metodo para registar un area de interes
+	 * @param area parametro que se va usar
+	 * @throws Exception
+	 */
 	public void registrarAreaInteres(AreaInteres area) throws Exception {
 		
 		AreaInteres ar = dao.buscarAreaInteres(area.getIdArea());
