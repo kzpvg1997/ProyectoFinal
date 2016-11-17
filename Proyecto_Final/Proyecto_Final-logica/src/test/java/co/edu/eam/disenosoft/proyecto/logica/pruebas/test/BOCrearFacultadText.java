@@ -14,7 +14,7 @@ import co.edu.eam.disenosoft.proyecto.logica.bos.BOPrograma;
 import co.edu.ingesoft.proyecto.persistencia.entidades.EducacionEgresado;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Facultad;
 
-public class BOCrearBuscarFacultadText {
+public class BOCrearFacultadText {
 
 	private BOFacultad boFacultad;
 	
