@@ -113,5 +113,16 @@ public class DAOOfertaLaboral implements IDAOOfertaEmpresa{
 		List<OfertaLaboral> ofertas = q.getResultList();
 		return ofertas;
 	}
+	/**
+	 * Metodo responsable de editar una oferta laboral para su cierre
+	 * @param oferta la oferta que se desea editar
+	 * @throws Exception en caso de que no exista la oferta
+	 */
+	public void editarOfertaLaboral(OfertaLaboral oferta) throws Exception {
+		EntityManager em = AdministradorEntityManager.getEntityManager();
+		em.getTransaction().begin();
+		em.merge(oferta);
+		em.getTransaction().commit();
+	}
 
 }

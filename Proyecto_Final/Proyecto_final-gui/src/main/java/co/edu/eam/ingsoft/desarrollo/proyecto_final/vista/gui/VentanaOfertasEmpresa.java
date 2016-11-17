@@ -100,6 +100,7 @@ public class VentanaOfertasEmpresa extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ofertas Laborales");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -210,8 +211,8 @@ public class VentanaOfertasEmpresa extends javax.swing.JFrame {
         jLabel32.setText("Programa a aplicar:");
         getContentPane().add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, -1, -1));
 
-        getContentPane().add(jCBPrograma, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 310, 40));
-        getContentPane().add(jTFSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 310, 40));
+        getContentPane().add(jCBPrograma, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 600, 310, 40));
+        getContentPane().add(jTFSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 310, 40));
 
         jLabel23.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
@@ -292,11 +293,11 @@ public class VentanaOfertasEmpresa extends javax.swing.JFrame {
     	String cargo = jTFCargoOfrecer.getText();
     	double salario = Double.parseDouble(jTFSalario.getText());
     	Date aperturaOferta = jCalendarAperturaOfert.getDate();
+    	boolean cierreOferta = false;
     	
     	
     	OfertaLaboral oferta = new OfertaLaboral(idOferta, nombreOferta, idEmpresa, idCiudad, idArea, programa,
-    			resumen, descripcion, requerimientos, cargo, salario, aperturaOferta);
-    	System.out.println(idOferta);
+    			resumen, descripcion, requerimientos, cargo, salario, aperturaOferta,cierreOferta);
 			conOfert.gernerarOferta(oferta);
 			limpiarCampos();
 			JOptionPane.showMessageDialog(null, "Se ha registrado una oferta exitosamente.", "EXITO",

@@ -35,6 +35,7 @@ public class VentanaReporteEgresados extends javax.swing.JFrame {
         jCBSituacionReporte = new javax.swing.JComboBox();
         jBInicio = new javax.swing.JButton();
         jBBuscar = new javax.swing.JButton();
+        jPanelDatos = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -49,14 +50,14 @@ public class VentanaReporteEgresados extends javax.swing.JFrame {
         jLTitulo1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLTitulo1.setForeground(new java.awt.Color(255, 255, 255));
         jLTitulo1.setText("Egresados por situacion actual:");
-        getContentPane().add(jLTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+        getContentPane().add(jLTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
 
         jLTitulo2.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         jLTitulo2.setForeground(new java.awt.Color(255, 255, 255));
         jLTitulo2.setText("REPORTE DE EGRESADOS");
-        getContentPane().add(jLTitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
+        getContentPane().add(jLTitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
 
-        getContentPane().add(jCBSituacionReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 320, 40));
+        getContentPane().add(jCBSituacionReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 320, 40));
 
         jBInicio.setBackground(new java.awt.Color(255, 255, 255));
         jBInicio.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -67,13 +68,17 @@ public class VentanaReporteEgresados extends javax.swing.JFrame {
                 jBInicioActionPerformed(evt);
             }
         });
-        getContentPane().add(jBInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 140, 60));
+        getContentPane().add(jBInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, 140, 60));
 
         jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono-Buscar.png"))); // NOI18N
-        getContentPane().add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 120, 90, 60));
+        getContentPane().add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 120, 90, 60));
+
+        jPanelDatos.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jPanelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 1000, 440));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 840, 570));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -95,9 +100,10 @@ public class VentanaReporteEgresados extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBInicio;
-    private javax.swing.JComboBox<String> jCBSituacionReporte;
+    private javax.swing.JComboBox jCBSituacionReporte;
     private javax.swing.JLabel jLTitulo1;
     private javax.swing.JLabel jLTitulo2;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JPanel jPanelDatos;
     // End of variables declaration//GEN-END:variables
 }

@@ -38,6 +38,13 @@ public interface IDAOOfertaEmpresa {
 	 */
 	public OfertaLaboral buscarOfertaLaboral (int idOferta)throws Exception;
 	/**
+	 * Metodo responsable de editar una oferta laboral para su cierre
+	 * @param oferta la oferta que se desea editar
+	 * @throws Exception en caso de que no exista la oferta
+	 */
+	public void editarOfertaLaboral (OfertaLaboral oferta)throws Exception;
+	
+	/**
 	 * Metodo encargado de listar las Ofertas Laborales
 	 * @return lista de Ofertas laborales
 	 * @throws Exception
@@ -56,6 +63,7 @@ public interface IDAOOfertaEmpresa {
 	 * @throws Exception en caso de que no exista ofertaAplicada
 	 */
 	public OfertaAplicada buscarOfertaAplicada (OfertaAplicadaPK idsoferta)throws Exception;
+	
 	/**
 	 * Metodo encargado de buscar una oferta Laboral por programa academico
 	 * @param pro el programa que recibe para buscar la oferta
