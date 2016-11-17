@@ -5,6 +5,19 @@
  */
 package co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.gui;
 
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
+import co.edu.eam.disenosoft.proyecto.logica.excepciones.ExcepcionNegocio;
+import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorEgresado;
+import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorOfertaLaboral;
+import co.edu.ingesoft.proyecto.persistencia.entidades.Egresado;
+import co.edu.ingesoft.proyecto.persistencia.entidades.OfertaAplicada;
+import co.edu.ingesoft.proyecto.persistencia.entidades.OfertaLaboral;
+
 /**
  *
  * @author TOSHIBAP55W
@@ -14,11 +27,26 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
     /**
      * Creates new form VentanaOfertasEgresados
      */
+	private ControladorOfertaLaboral conOfert;
+	private ControladorEgresado conEgre;
+	
     public VentanaOfertasEgresados() {
         initComponents();
         this.setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-         this.setResizable(false);
+	    this.setResizable(false);
+	    jPanelDatos.setVisible(false);
+	    conOfert = new ControladorOfertaLaboral();
+	    conEgre = new ControladorEgresado();
+	    
+	    try {
+	    	
+			cargarComboOfertas();
+		
+	    } catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     /**
@@ -31,31 +59,39 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
     private void initComponents() {
 
         jLTitulo1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jListOfertas = new javax.swing.JList();
         jLTitulo2 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTARequerimientosOfert = new javax.swing.JTextArea();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jTFAreaConocimientoOfert = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
-        jTFSalarioOfert = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        jTFCiudadOfert = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jTFAperturaOfert = new javax.swing.JTextField();
+        jBInicio = new javax.swing.JButton();
+        jCBOferta = new javax.swing.JComboBox();
+        jPanelDatos = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTADescripcionOfert = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTARequerimientosOfert = new javax.swing.JTextArea();
         jLabel23 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTAResumenOfert = new javax.swing.JTextArea();
-        jLabel20 = new javax.swing.JLabel();
+        jTFSalarioOfert = new javax.swing.JTextField();
+        jTFCiudadOfert = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jTFAreaConocimientoOfert = new javax.swing.JTextField();
         jTFCargoOfert = new javax.swing.JTextField();
-        jBInicio = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
+        jCalendarApertura = new com.toedter.calendar.JCalendar();
+        jLabel28 = new javax.swing.JLabel();
+        jTFIDEgresado = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jTFProgramaOfrecer = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        jTFEmpresaOfrecer = new javax.swing.JTextField();
         jBAplicarOferta = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jBVerOferta = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ofertas");
@@ -69,79 +105,12 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
         jLTitulo1.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         jLTitulo1.setForeground(new java.awt.Color(255, 255, 255));
         jLTitulo1.setText("OFERTAS LABORALES");
-        getContentPane().add(jLTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
-
-        jScrollPane1.setViewportView(jListOfertas);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 231, 278));
+        getContentPane().add(jLTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, -1, -1));
 
         jLTitulo2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLTitulo2.setForeground(new java.awt.Color(255, 255, 255));
         jLTitulo2.setText("Ofertas:");
-        getContentPane().add(jLTitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
-
-        jTARequerimientosOfert.setColumns(20);
-        jTARequerimientosOfert.setRows(5);
-        jScrollPane2.setViewportView(jTARequerimientosOfert);
-
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 310, 110));
-
-        jLabel31.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel31.setText("Requerimientos de la oferta:");
-        getContentPane().add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
-
-        jLabel22.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setText("Apertura de la oferta:");
-        getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 580, -1, -1));
-        getContentPane().add(jTFAreaConocimientoOfert, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 630, 310, 40));
-
-        jLabel24.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText("Ciudad de la oferta:");
-        getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 390, -1, -1));
-        getContentPane().add(jTFSalarioOfert, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 430, 310, 40));
-
-        jLabel21.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("Cargo a Ofrecer:");
-        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 580, -1, -1));
-        getContentPane().add(jTFCiudadOfert, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 430, 310, 40));
-
-        jLabel19.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("Area de Conocimiento:");
-        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 580, -1, -1));
-
-        jLabel28.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setText("Salario:");
-        getContentPane().add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, -1, -1));
-        getContentPane().add(jTFAperturaOfert, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 630, 310, 40));
-
-        jTADescripcionOfert.setColumns(20);
-        jTADescripcionOfert.setRows(5);
-        jScrollPane4.setViewportView(jTADescripcionOfert);
-
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 310, 160));
-
-        jLabel23.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText("Descripcion de la Oferta:");
-        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, -1, -1));
-
-        jTAResumenOfert.setColumns(20);
-        jTAResumenOfert.setRows(5);
-        jScrollPane3.setViewportView(jTAResumenOfert);
-
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 180, 310, 160));
-
-        jLabel20.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setText("Resumen:");
-        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 130, -1, -1));
-        getContentPane().add(jTFCargoOfert, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 630, 310, 40));
+        getContentPane().add(jLTitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, -1, -1));
 
         jBInicio.setBackground(new java.awt.Color(255, 255, 255));
         jBInicio.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -154,6 +123,85 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
         });
         getContentPane().add(jBInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 20, 140, 60));
 
+        jCBOferta.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jCBOferta.setForeground(new java.awt.Color(255, 0, 51));
+        jCBOferta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una oferta" }));
+        getContentPane().add(jCBOferta, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 350, 40));
+
+        jPanelDatos.setBackground(new java.awt.Color(204, 204, 204));
+        jPanelDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTADescripcionOfert.setColumns(20);
+        jTADescripcionOfert.setRows(5);
+        jScrollPane4.setViewportView(jTADescripcionOfert);
+
+        jPanelDatos.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 310, 160));
+
+        jTARequerimientosOfert.setColumns(20);
+        jTARequerimientosOfert.setRows(5);
+        jScrollPane2.setViewportView(jTARequerimientosOfert);
+
+        jPanelDatos.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 310, 110));
+
+        jLabel23.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setText("Descripcion de la Oferta:");
+        jPanelDatos.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, -1, -1));
+
+        jLabel20.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("Resumen:");
+        jPanelDatos.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, -1, -1));
+
+        jTAResumenOfert.setColumns(20);
+        jTAResumenOfert.setRows(5);
+        jScrollPane3.setViewportView(jTAResumenOfert);
+
+        jPanelDatos.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 90, 310, 160));
+        jPanelDatos.add(jTFSalarioOfert, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 310, 40));
+        jPanelDatos.add(jTFCiudadOfert, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 310, 310, 40));
+
+        jLabel24.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setText("Ciudad de la oferta:");
+        jPanelDatos.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 270, -1, -1));
+
+        jLabel19.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("Empresa que oferta:");
+        jPanelDatos.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, -1));
+        jPanelDatos.add(jTFAreaConocimientoOfert, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 310, 40));
+        jPanelDatos.add(jTFCargoOfert, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 310, 40));
+
+        jLabel22.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("Apertura de la oferta:");
+        jPanelDatos.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 390, -1, -1));
+        jPanelDatos.add(jCalendarApertura, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 440, 300, -1));
+
+        jLabel28.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel28.setText("Ingrese ID del egresado:");
+        jPanelDatos.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+        jPanelDatos.add(jTFIDEgresado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 300, 40));
+
+        jLabel25.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setText("Para el Programa:");
+        jPanelDatos.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+
+        jLabel26.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setText("Cargo a Ofrecer:");
+        jPanelDatos.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, -1, -1));
+        jPanelDatos.add(jTFProgramaOfrecer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 300, 40));
+
+        jLabel27.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel27.setText("Area de Conocimiento:");
+        jPanelDatos.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, -1, -1));
+        jPanelDatos.add(jTFEmpresaOfrecer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 300, 40));
+
         jBAplicarOferta.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jBAplicarOferta.setForeground(new java.awt.Color(255, 0, 0));
         jBAplicarOferta.setText("APLICAR OFERTA");
@@ -162,25 +210,81 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
                 jBAplicarOfertaActionPerformed(evt);
             }
         });
-        getContentPane().add(jBAplicarOferta, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 720, 270, 40));
+        jPanelDatos.add(jBAplicarOferta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 650, 270, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, 1150, 780));
+        jLabel31.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel31.setText("Requerimientos de la oferta:");
+        jPanelDatos.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+
+        jLabel30.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel30.setText("Salario a ofrecer:");
+        jPanelDatos.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, -1, -1));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
+        jPanelDatos.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1150, 840));
+
+        getContentPane().add(jPanelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1150, 710));
+
+        jBVerOferta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono-Buscar.png"))); // NOI18N
+        jBVerOferta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBVerOferta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBVerOfertaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBVerOferta, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 70, 80, 50));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 840));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBAplicarOferta;
+    private javax.swing.JButton jBInicio;
+    private javax.swing.JButton jBVerOferta;
+    private javax.swing.JComboBox jCBOferta;
+    private com.toedter.calendar.JCalendar jCalendarApertura;
+    private javax.swing.JLabel jLTitulo1;
+    private javax.swing.JLabel jLTitulo2;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JPanel jPanelDatos;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextArea jTADescripcionOfert;
+    private javax.swing.JTextArea jTARequerimientosOfert;
+    private javax.swing.JTextArea jTAResumenOfert;
+    private javax.swing.JTextField jTFAreaConocimientoOfert;
+    private javax.swing.JTextField jTFCargoOfert;
+    private javax.swing.JTextField jTFCiudadOfert;
+    private javax.swing.JTextField jTFEmpresaOfrecer;
+    private javax.swing.JTextField jTFIDEgresado;
+    private javax.swing.JTextField jTFProgramaOfrecer;
+    private javax.swing.JTextField jTFSalarioOfert;
+    // End of variables declaration//GEN-END:variables
+    
     private void jBInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInicioActionPerformed
         VentanaPrincipal principal = new VentanaPrincipal(0);
         principal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBInicioActionPerformed
-
-    private void jBAplicarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAplicarOfertaActionPerformed
-        VentanaPrincipal principal = new VentanaPrincipal(0);
-        principal.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jBAplicarOfertaActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         VentanaPrincipal principal = new VentanaPrincipal(0);
@@ -189,34 +293,98 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
        
     }//GEN-LAST:event_formWindowClosing
 
-   
+    private void jBVerOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerOfertaActionPerformed
+     
+    	try{
+    		if(jCBOferta.getSelectedIndex()==0){
+    			JOptionPane.showMessageDialog(null,"Por favor seleccione una oferta","SELECCIONE", JOptionPane.WARNING_MESSAGE);
+    		}else{
+    			
+    		OfertaLaboral oferta = (OfertaLaboral)jCBOferta.getSelectedItem();
+    		OfertaLaboral of = conOfert.buscarOfertaLaboral(oferta.getIdOferta());	
+    		jTFProgramaOfrecer.setText(String.valueOf(of.getPrograma()));
+    		jTADescripcionOfert.setText(of.getDescripcion());
+    		jTAResumenOfert.setText(of.getResumen());
+    		jTARequerimientosOfert.setText(of.getRequerimientos());
+    		jTFSalarioOfert.setText(String.valueOf(of.getSalario()));
+    		jTFCiudadOfert.setText(String.valueOf(of.getIdCudad()));
+    		jTFAreaConocimientoOfert.setText(String.valueOf(of.getIdArea()));
+    		jTFCargoOfert.setText(of.getCargo());
+    		jCalendarApertura.setDate(of.getAperturaOferta());
+    		jTFEmpresaOfrecer.setText(String.valueOf(of.getIdEmpresa()));
+    		jPanelDatos.setVisible(true);
+    		desabilitar();
+    		
+    		
+    	
+    		}
+    	}catch (Exception e){
+    		e.getMessage();
+    	}	
+    }//GEN-LAST:event_jBVerOfertaActionPerformed
+    
+    private void jBAplicarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAplicarOfertaActionPerformed
+    	if(jTFIDEgresado.getText().isEmpty()){
+			JOptionPane.showMessageDialog(null,"Para aplicar una oferta ingrese el ID del egresado ya registrado","INGRESE", JOptionPane.WARNING_MESSAGE);
+		}else{
+			try {
+			int idEgresado = Integer.parseInt(jTFIDEgresado.getText());
+			Egresado egresado = conEgre.buscarEgresado(idEgresado);
+    		OfertaLaboral oferta = (OfertaLaboral)jCBOferta.getSelectedItem();
+    		
+    		OfertaAplicada ofertaApli = new OfertaAplicada(egresado, oferta);
+    		
+    		conOfert.aplicarOfertaEgresado(ofertaApli);
+			JOptionPane.showMessageDialog(null,"Se ha aplicado una oferta laboral a ''"+egresado.getNombre()+"'' "
+					+ "Exitoamente","EXITO", JOptionPane.INFORMATION_MESSAGE);
+			
+			System.out.println(egresado.getId()+" --- "+oferta.getIdOferta());
+			limpiarCampos();
+			
+			} catch (ExcepcionNegocio ex){
+				JOptionPane.showMessageDialog(null,ex.getMessage(),"ERROR", JOptionPane.WARNING_MESSAGE);
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBAplicarOferta;
-    private javax.swing.JButton jBInicio;
-    private javax.swing.JLabel jLTitulo1;
-    private javax.swing.JLabel jLTitulo2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JList<String> jListOfertas;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTADescripcionOfert;
-    private javax.swing.JTextArea jTARequerimientosOfert;
-    private javax.swing.JTextArea jTAResumenOfert;
-    private javax.swing.JTextField jTFAperturaOfert;
-    private javax.swing.JTextField jTFAreaConocimientoOfert;
-    private javax.swing.JTextField jTFCargoOfert;
-    private javax.swing.JTextField jTFCiudadOfert;
-    private javax.swing.JTextField jTFSalarioOfert;
-    // End of variables declaration//GEN-END:variables
+			}catch (Exception e){
+	    		e.getMessage();
+	    		
+	    	}
+		}
+    }//GEN-LAST:event_jBAplicarOfertaActionPerformed
+   
+    public void cargarComboOfertas()throws Exception{
+    	
+    	List<OfertaLaboral> lista = conOfert.listarOfertas();
+    	for (OfertaLaboral ofertaLaboral : lista) {
+			jCBOferta.addItem(ofertaLaboral);
+		}
+    }
+    
+    public void desabilitar(){
+    	
+    	jTFProgramaOfrecer.setEditable(false);
+		jTADescripcionOfert.setEditable(false);
+		jTAResumenOfert.setEditable(false);
+		jTARequerimientosOfert.setEditable(false);
+		jTFSalarioOfert.setEditable(false);
+		jTFCiudadOfert.setEditable(false);
+		jTFAreaConocimientoOfert.setEditable(false);
+		jTFCargoOfert.setEditable(false);
+		jCalendarApertura.setEnabled(false);
+		jTFEmpresaOfrecer.setEditable(false);
+    }
+    
+    public void limpiarCampos(){
+    	
+    	jCBOferta.setSelectedIndex(0);
+    	jTFProgramaOfrecer.setText(null);
+		jTADescripcionOfert.setText(null);
+		jTAResumenOfert.setText(null);
+		jTARequerimientosOfert.setText(null);
+		jTFSalarioOfert.setText(null);
+		jTFCiudadOfert.setText(null);
+		jTFAreaConocimientoOfert.setText(null);
+		jTFCargoOfert.setText(null);
+		jCalendarApertura.setDate(new Date());
+		jTFEmpresaOfrecer.setText(null);
+    }
 }

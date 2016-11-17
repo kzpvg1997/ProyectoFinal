@@ -23,12 +23,13 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoEmpresa
 
 /**
  * @author TOSHIBAP55W
- *
  */
+
+
 @Entity
 @Table(name="tb_info_laboral")
 public class InfoLaboralEgresado implements Serializable{
-
+	
 	@Id
 	@OneToOne
 	@JoinColumn(name="id_egresado")
@@ -61,6 +62,10 @@ public class InfoLaboralEgresado implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date fechaSalida;
 	
+	@ManyToOne
+	@JoinColumn(name="id_programa")
+	private Programa programa;
+	
 
 	public InfoLaboralEgresado(){
 		
@@ -79,7 +84,7 @@ public class InfoLaboralEgresado implements Serializable{
 	 */
 	public InfoLaboralEgresado(Egresado idEgresado, SituacionActualEnum situacionActual, Empresa idEmpresa,
 			TipoEmpresaEnum tipoempresa, String sectorLaboral, String cargoEmpresa, Date fechaIngreso,
-			Date fechaSalida) {
+			Date fechaSalida,Programa programa) {
 		super();
 		this.idEgresado = idEgresado;
 		this.situacionActual = situacionActual;
@@ -89,6 +94,7 @@ public class InfoLaboralEgresado implements Serializable{
 		this.cargoEmpresa = cargoEmpresa;
 		this.fechaIngreso = fechaIngreso;
 		this.fechaSalida = fechaSalida;
+		this.programa = programa;
 	}
 
 
@@ -220,6 +226,21 @@ public class InfoLaboralEgresado implements Serializable{
 		this.idEmpresa = idEmpresa;
 	}
 
-	
+
+	/**
+	 * @return the programa
+	 */
+	public Programa getPrograma() {
+		return programa;
+	}
+
+
+	/**
+	 * @param programa the programa to set
+	 */
+	public void setPrograma(Programa programa) {
+		this.programa = programa;
+	}
+
 	
 }

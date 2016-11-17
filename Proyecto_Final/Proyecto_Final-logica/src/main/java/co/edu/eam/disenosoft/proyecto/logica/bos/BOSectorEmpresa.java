@@ -20,7 +20,11 @@ public class BOSectorEmpresa {
 	public BOSectorEmpresa(){
 		dao = new DAOSectorEmpresa();
 	}
-	
+	/**
+	 * Metodo encargado de listar los SectoresEmpresa
+	 * @return lista de SectorEmpresa
+	 * @throws Exception
+	 */
 	public List<SectorEmpresa> listarSectores() throws Exception {
 		return dao.listarSectores();
 	}

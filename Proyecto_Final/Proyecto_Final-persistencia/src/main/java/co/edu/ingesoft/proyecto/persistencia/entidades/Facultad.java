@@ -24,7 +24,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name="tb_facultad")
 public class Facultad implements Serializable{
-
+	/**
+	 * consulta encargada de traer las facultades registradas
+	 */
 	public static final String FACULTADES = "Facultad.facultades";
 	
 	@Id

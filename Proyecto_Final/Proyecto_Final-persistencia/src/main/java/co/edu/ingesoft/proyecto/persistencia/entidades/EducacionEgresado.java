@@ -14,11 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.NivelEducativoEnum;
-import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoProgramaEnum;
 
 /**
  * @author TOSHIBAP55W

@@ -14,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoEmpresaEnum;
@@ -30,17 +29,33 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoEmpresa
 	query="SELECT dep FROM Departamento dep"),
 	
 	@NamedQuery(name=Empresa.EMPRESAS,
-	query="SELECT emp FROM Empresa emp")
+	query="SELECT emp FROM Empresa emp"),
+	
+	 @NamedQuery(name=Empresa.EMPLEADOS_POR_EMPRESA,
+		query="SELECT inf FROM InfoLaboralEgresado inf WHERE inf.idEmpresa=?1")
+
 	})
+
 @Entity
 @Table(name="tb_empresa")
 public class Empresa implements Serializable{
-	
+	/**
+	 * Consulta encargada de traer las Ciudades registradas
+	 */
 	public static final String CIUDADES_EMPRESA = "Empresa.ciudades";
-	
+	/**
+	 * consulta encargada de traer los departamentos registrados
+	 */
 	public static final String DEPARTAMENTOS_EMPRESA = "Empresa.departamentos";
-	
+	/**
+	 * Consulta encargada de traer las empresas registradas
+	 */
 	public static final String EMPRESAS = "Empresa.empresas";
+	/**
+	 * consulta encargada de traer los empleados de una empresa
+	 * @param idEmpresa el nit de la empresa que tiene los empledos
+	 */
+	public static final String EMPLEADOS_POR_EMPRESA = "Empresa.empleadosEmpresa";
 	
 	@Id
 	@Column(name="id_empresa")

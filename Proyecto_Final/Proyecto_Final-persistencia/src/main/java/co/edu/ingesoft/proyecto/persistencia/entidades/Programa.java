@@ -26,7 +26,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name="tb_programa")
 public class Programa implements Serializable{
-
+	/**
+	 * Consulta encargada de traer los porgramas registrados
+	 */
 	public static final String PROGRAMAS = "Programa.programas";
 	
 	@OneToOne

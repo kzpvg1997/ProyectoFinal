@@ -5,6 +5,14 @@
  */
 package co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.gui;
 
+import java.util.List;
+
+import javax.swing.table.DefaultTableModel;
+
+import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorEmpresa;
+import co.edu.ingesoft.proyecto.persistencia.entidades.Empresa;
+import co.edu.ingesoft.proyecto.persistencia.entidades.InfoLaboralEgresado;
+
 /**
  *
  * @author TOSHIBAP55W
@@ -14,11 +22,24 @@ public class VentanaEmpleadosEmpresa extends javax.swing.JFrame {
     /**
      * Creates new form VentanaEmpleadosEmpresa
      */
+	
+	private ControladorEmpresa conEmp;
+	
     public VentanaEmpleadosEmpresa() {
         initComponents();
           this.setLocationRelativeTo(null);
            setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
             this.setResizable(false);
+            conEmp = new ControladorEmpresa();
+         
+            try {
+				cargarComboEmpresas();
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            
     }
 
     /**
@@ -72,6 +93,11 @@ public class VentanaEmpleadosEmpresa extends javax.swing.JFrame {
         getContentPane().add(jLTitulo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, -1));
 
         jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono-Buscar.png"))); // NOI18N
+        jBBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 130, 90, 60));
 
         jTablaEmpleadosEmpresa.setModel(new javax.swing.table.DefaultTableModel(
@@ -99,6 +125,17 @@ public class VentanaEmpleadosEmpresa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBBuscar;
+    private javax.swing.JButton jBInicio;
+    private javax.swing.JComboBox jCBEmpresaReporte;
+    private javax.swing.JLabel jLTitulo2;
+    private javax.swing.JLabel jLTitulo3;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTablaEmpleadosEmpresa;
+    // End of variables declaration//GEN-END:variables
+    
     private void jBInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInicioActionPerformed
         VentanaPrincipal principal = new VentanaPrincipal(3);
         principal.setVisible(true);
@@ -112,14 +149,41 @@ public class VentanaEmpleadosEmpresa extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBBuscar;
-    private javax.swing.JButton jBInicio;
-    private javax.swing.JComboBox<String> jCBEmpresaReporte;
-    private javax.swing.JLabel jLTitulo2;
-    private javax.swing.JLabel jLTitulo3;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTablaEmpleadosEmpresa;
-    // End of variables declaration//GEN-END:variables
+    public void cargarComboEmpresas()throws Exception{
+    	jCBEmpresaReporte.removeAllItems();
+    	List<Empresa> lista = conEmp.listarEmpresas();
+    	for (int i = 0; i < lista.size(); i++) {
+			jCBEmpresaReporte.addItem(lista.get(i));
+		}
+    }
+    
+    private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+    	try {
+    	Empresa emp = (Empresa)jCBEmpresaReporte.getSelectedItem();
+    	cargarEmpleadosEmpresa(emp);
+		
+    	
+    	} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    }//GEN-LAST:event_jBBuscarActionPerformed
+    
+
+    public void cargarEmpleadosEmpresa(Empresa empresa){
+    	try {
+    		DefaultTableModel table = (DefaultTableModel) jTablaEmpleadosEmpresa.getModel();
+    		table.setRowCount(0);
+    		List<InfoLaboralEgresado> egresados = conEmp.listarEgresadosEmpresa(empresa);
+    		if(egresados.size() > 0){
+				for (InfoLaboralEgresado infoEg : egresados) {
+					table.addRow(new Object[]{infoEg.getIdEmpresa().getNombreEmpresa(),infoEg.getIdEgresado().getNombre(),infoEg.getIdEgresado().getIdPrograma().getNombrePrograma(),infoEg.getCargoEmpresa(),infoEg.getFechaIngreso()});
+				}
+    		}
+    		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
 }
