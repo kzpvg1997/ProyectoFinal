@@ -5,6 +5,19 @@
  */
 package co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.gui;
 
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
+import co.edu.eam.disenosoft.proyecto.logica.excepciones.ExcepcionNegocio;
+import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorEgresado;
+import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorOfertaLaboral;
+import co.edu.ingesoft.proyecto.persistencia.entidades.Egresado;
+import co.edu.ingesoft.proyecto.persistencia.entidades.OfertaAplicada;
+import co.edu.ingesoft.proyecto.persistencia.entidades.OfertaLaboral;
+
 /**
  *
  * @author TOSHIBAP55W
@@ -14,12 +27,26 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
     /**
      * Creates new form VentanaOfertasEgresados
      */
+	private ControladorOfertaLaboral conOfert;
+	private ControladorEgresado conEgre;
+	
     public VentanaOfertasEgresados() {
         initComponents();
         this.setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-         this.setResizable(false);
-         jPanelDatos.setVisible(false);
+	    this.setResizable(false);
+	    jPanelDatos.setVisible(false);
+	    conOfert = new ControladorOfertaLaboral();
+	    conEgre = new ControladorEgresado();
+	    
+	    try {
+	    	
+			cargarComboOfertas();
+		
+	    } catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     /**
@@ -34,7 +61,7 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
         jLTitulo1 = new javax.swing.JLabel();
         jLTitulo2 = new javax.swing.JLabel();
         jBInicio = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox();
+        jCBOferta = new javax.swing.JComboBox();
         jPanelDatos = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTADescripcionOfert = new javax.swing.JTextArea();
@@ -51,7 +78,7 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
         jTFAreaConocimientoOfert = new javax.swing.JTextField();
         jTFCargoOfert = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jCalendarApertura = new com.toedter.calendar.JCalendar();
         jLabel28 = new javax.swing.JLabel();
         jTFIDEgresado = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
@@ -62,7 +89,6 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
         jBAplicarOferta = new javax.swing.JButton();
         jLabel31 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jBVerOferta = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
@@ -79,7 +105,7 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
         jLTitulo1.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         jLTitulo1.setForeground(new java.awt.Color(255, 255, 255));
         jLTitulo1.setText("OFERTAS LABORALES");
-        getContentPane().add(jLTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, -1));
+        getContentPane().add(jLTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, -1, -1));
 
         jLTitulo2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLTitulo2.setForeground(new java.awt.Color(255, 255, 255));
@@ -97,7 +123,10 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
         });
         getContentPane().add(jBInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 20, 140, 60));
 
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 350, 40));
+        jCBOferta.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jCBOferta.setForeground(new java.awt.Color(255, 0, 51));
+        jCBOferta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una oferta" }));
+        getContentPane().add(jCBOferta, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 350, 40));
 
         jPanelDatos.setBackground(new java.awt.Color(204, 204, 204));
         jPanelDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -148,24 +177,24 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Apertura de la oferta:");
         jPanelDatos.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 390, -1, -1));
-        jPanelDatos.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 440, 300, -1));
+        jPanelDatos.add(jCalendarApertura, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 440, 300, -1));
 
         jLabel28.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setText("Ingrese ID para aplicar oferta:");
-        jPanelDatos.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
-        jPanelDatos.add(jTFIDEgresado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 300, 40));
+        jLabel28.setText("Ingrese ID del egresado:");
+        jPanelDatos.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+        jPanelDatos.add(jTFIDEgresado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 300, 40));
 
         jLabel25.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Para el Programa:");
-        jPanelDatos.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+        jPanelDatos.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
         jLabel26.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Cargo a Ofrecer:");
         jPanelDatos.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, -1, -1));
-        jPanelDatos.add(jTFProgramaOfrecer, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 202, 300, 40));
+        jPanelDatos.add(jTFProgramaOfrecer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 300, 40));
 
         jLabel27.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
@@ -193,11 +222,8 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
         jLabel30.setText("Salario a ofrecer:");
         jPanelDatos.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, -1, -1));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
-        jPanelDatos.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 710));
-
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
-        jPanelDatos.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 1150, 840));
+        jPanelDatos.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1150, 840));
 
         getContentPane().add(jPanelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1150, 710));
 
@@ -221,11 +247,10 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
     private javax.swing.JButton jBAplicarOferta;
     private javax.swing.JButton jBInicio;
     private javax.swing.JButton jBVerOferta;
-    private com.toedter.calendar.JCalendar jCalendar1;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jCBOferta;
+    private com.toedter.calendar.JCalendar jCalendarApertura;
     private javax.swing.JLabel jLTitulo1;
     private javax.swing.JLabel jLTitulo2;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel19;
@@ -261,12 +286,6 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jBInicioActionPerformed
 
-    private void jBAplicarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAplicarOfertaActionPerformed
-        VentanaPrincipal principal = new VentanaPrincipal(0);
-        principal.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jBAplicarOfertaActionPerformed
-
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         VentanaPrincipal principal = new VentanaPrincipal(0);
         this.dispose();
@@ -275,10 +294,97 @@ public class VentanaOfertasEgresados extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jBVerOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerOfertaActionPerformed
-       jPanelDatos.setVisible(true);
+     
+    	try{
+    		if(jCBOferta.getSelectedIndex()==0){
+    			JOptionPane.showMessageDialog(null,"Por favor seleccione una oferta","SELECCIONE", JOptionPane.WARNING_MESSAGE);
+    		}else{
+    			
+    		OfertaLaboral oferta = (OfertaLaboral)jCBOferta.getSelectedItem();
+    		OfertaLaboral of = conOfert.buscarOfertaLaboral(oferta.getIdOferta());	
+    		jTFProgramaOfrecer.setText(String.valueOf(of.getPrograma()));
+    		jTADescripcionOfert.setText(of.getDescripcion());
+    		jTAResumenOfert.setText(of.getResumen());
+    		jTARequerimientosOfert.setText(of.getRequerimientos());
+    		jTFSalarioOfert.setText(String.valueOf(of.getSalario()));
+    		jTFCiudadOfert.setText(String.valueOf(of.getIdCudad()));
+    		jTFAreaConocimientoOfert.setText(String.valueOf(of.getIdArea()));
+    		jTFCargoOfert.setText(of.getCargo());
+    		jCalendarApertura.setDate(of.getAperturaOferta());
+    		jTFEmpresaOfrecer.setText(String.valueOf(of.getIdEmpresa()));
+    		jPanelDatos.setVisible(true);
+    		desabilitar();
+    		
+    		
+    	
+    		}
+    	}catch (Exception e){
+    		e.getMessage();
+    	}	
     }//GEN-LAST:event_jBVerOfertaActionPerformed
-
-   
-
     
+    private void jBAplicarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAplicarOfertaActionPerformed
+    	if(jTFIDEgresado.getText().isEmpty()){
+			JOptionPane.showMessageDialog(null,"Para aplicar una oferta ingrese el ID del egresado ya registrado","INGRESE", JOptionPane.WARNING_MESSAGE);
+		}else{
+			try {
+			int idEgresado = Integer.parseInt(jTFIDEgresado.getText());
+			Egresado egresado = conEgre.buscarEgresado(idEgresado);
+    		OfertaLaboral oferta = (OfertaLaboral)jCBOferta.getSelectedItem();
+    		
+    		OfertaAplicada ofertaApli = new OfertaAplicada(egresado, oferta);
+    		
+    		conOfert.aplicarOfertaEgresado(ofertaApli);
+			JOptionPane.showMessageDialog(null,"Se ha aplicado una oferta laboral a ''"+egresado.getNombre()+"'' "
+					+ "Exitoamente","EXITO", JOptionPane.INFORMATION_MESSAGE);
+			
+			System.out.println(egresado.getId()+" --- "+oferta.getIdOferta());
+			limpiarCampos();
+			
+			} catch (ExcepcionNegocio ex){
+				JOptionPane.showMessageDialog(null,ex.getMessage(),"ERROR", JOptionPane.WARNING_MESSAGE);
+
+			}catch (Exception e){
+	    		e.getMessage();
+	    		
+	    	}
+		}
+    }//GEN-LAST:event_jBAplicarOfertaActionPerformed
+   
+    public void cargarComboOfertas()throws Exception{
+    	
+    	List<OfertaLaboral> lista = conOfert.listarOfertas();
+    	for (OfertaLaboral ofertaLaboral : lista) {
+			jCBOferta.addItem(ofertaLaboral);
+		}
+    }
+    
+    public void desabilitar(){
+    	
+    	jTFProgramaOfrecer.setEditable(false);
+		jTADescripcionOfert.setEditable(false);
+		jTAResumenOfert.setEditable(false);
+		jTARequerimientosOfert.setEditable(false);
+		jTFSalarioOfert.setEditable(false);
+		jTFCiudadOfert.setEditable(false);
+		jTFAreaConocimientoOfert.setEditable(false);
+		jTFCargoOfert.setEditable(false);
+		jCalendarApertura.setEnabled(false);
+		jTFEmpresaOfrecer.setEditable(false);
+    }
+    
+    public void limpiarCampos(){
+    	
+    	jCBOferta.setSelectedIndex(0);
+    	jTFProgramaOfrecer.setText(null);
+		jTADescripcionOfert.setText(null);
+		jTAResumenOfert.setText(null);
+		jTARequerimientosOfert.setText(null);
+		jTFSalarioOfert.setText(null);
+		jTFCiudadOfert.setText(null);
+		jTFAreaConocimientoOfert.setText(null);
+		jTFCargoOfert.setText(null);
+		jCalendarApertura.setDate(new Date());
+		jTFEmpresaOfrecer.setText(null);
+    }
 }

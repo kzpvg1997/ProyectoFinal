@@ -21,10 +21,16 @@ import javax.persistence.TemporalType;
  * @author TOSHIBAP55W
  *
  */
+@NamedQueries({
+	@NamedQuery(name=OfertaLaboral.OFERTAS,
+			query="SELECT ofr FROM OfertaLaboral ofr")
+	})
 @Entity
 @Table(name="tb_oferta_laboral")
 public class OfertaLaboral implements Serializable{
 
+	
+	public static final String OFERTAS = "OfertaLaboral.ofertas";
 	
 	@Id
 	@Column(name="id_oferta")

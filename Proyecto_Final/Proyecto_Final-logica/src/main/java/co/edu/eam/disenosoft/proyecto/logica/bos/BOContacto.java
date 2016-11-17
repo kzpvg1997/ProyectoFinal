@@ -1,8 +1,8 @@
 /**
  * 
  */
-package co.edu.eam.disenosoft.proyecto.logica.bos;
 
+package co.edu.eam.disenosoft.proyecto.logica.bos;
 import co.edu.eam.disenosoft.proyecto.logica.excepciones.ExcepcionNegocio;
 import co.edu.ingesoft.proyecto.persistencia.definiciones.IDAOContacto;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Contacto;

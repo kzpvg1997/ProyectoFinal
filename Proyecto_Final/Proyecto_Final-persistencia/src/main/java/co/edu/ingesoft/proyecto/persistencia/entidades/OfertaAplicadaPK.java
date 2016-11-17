@@ -50,6 +50,36 @@ public class OfertaAplicadaPK implements Serializable{
 			return false;
 		return true;
 	}
+
+	/**
+	 * @return the idEgresado
+	 */
+	public int getIdEgresado() {
+		return idEgresado;
+	}
+
+	/**
+	 * @param idEgresado the idEgresado to set
+	 */
+	public void setIdEgresado(int idEgresado) {
+		this.idEgresado = idEgresado;
+	}
+
+	/**
+	 * @return the idOferta
+	 */
+	public int getIdOferta() {
+		return idOferta;
+	}
+
+	/**
+	 * @param idOferta the idOferta to set
+	 */
+	public void setIdOferta(int idOferta) {
+		this.idOferta = idOferta;
+	}
+	
+	
 	
 	
 }
