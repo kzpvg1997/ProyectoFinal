@@ -21,8 +21,12 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoCorreoE
 import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoDocumentoEnum;
 import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoTelefonoEnum;
 
-public class BOEditarEgresadoText {
+public class BOEditarEgresadoTest {
 
+	/**
+	 * Prueba unitaria que nos permite veridficar el metodo
+	 * de ediar un egresado
+	 */
 
 
 	private BOEgresado boEgresado;

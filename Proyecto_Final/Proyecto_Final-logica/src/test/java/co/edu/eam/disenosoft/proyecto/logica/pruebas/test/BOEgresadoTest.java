@@ -19,7 +19,10 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.NivelEducat
 
 public class BOEgresadoTest {
 
-
+	/**
+	 * Prueba unitaria que nos permite verificar el metodo
+	 * crear y buscar un egresado 
+	 */
 	private BOEgresado boEgresado;
 	private BOEducacionEgresado boEducacionEgresado;
 	private BOFacultad boFacultad;

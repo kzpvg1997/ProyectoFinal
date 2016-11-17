@@ -16,6 +16,10 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoEmpresa
 
 public class BOCrearBuscarEmpresaTest {
 
+	/**
+	 * Prueba unitaria que nos permite buscar
+	 * verificar el metodo crear y buscar una empresa
+	 */
 	private BOEmpresa boEmpresa;
 	
 	@BeforeClass

@@ -14,8 +14,12 @@ import co.edu.eam.disenosoft.proyecto.logica.bos.BOPrograma;
 import co.edu.ingesoft.proyecto.persistencia.entidades.EducacionEgresado;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Facultad;
 
-public class BOCrearFacultadText {
+public class BOCrearFacultadTest {
 
+	/**
+	 * Prueba unitaria que nos permite vrificar el metodo
+	 * crear una facultad
+	 */
 	private BOFacultad boFacultad;
 	
 	@BeforeClass

@@ -17,6 +17,12 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.Facultad;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Programa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.NivelEducativoEnum;
 
+/**
+ * Prueba unitaria que permite
+ * probar el metodo crear y buscar un egresado
+ * @author GAR-T
+ *
+ */
 public class BOCrearBuscarEgresadoTest {
 
 

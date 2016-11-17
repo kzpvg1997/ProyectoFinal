@@ -13,8 +13,12 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.Empresa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.SectorEmpresa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoEmpresaEnum;
 
-public class BOEditarEmpresaText {
+public class BOEditarEmpresaTest {
 
+	/**
+	 * Prueba unitaria que nos permite probar el metodo
+	 * editar empresa
+	 */
 
 	private BOEmpresa boEmpresa;
 	
