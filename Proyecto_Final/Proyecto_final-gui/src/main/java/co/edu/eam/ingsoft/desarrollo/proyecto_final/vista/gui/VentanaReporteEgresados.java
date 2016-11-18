@@ -5,6 +5,21 @@
  */
 package co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.gui;
 
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
+
+import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorEgresado;
+import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorOfertaLaboral;
+import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorPrograma;
+import co.edu.ingesoft.proyecto.persistencia.entidades.InfoLaboralEgresado;
+import co.edu.ingesoft.proyecto.persistencia.entidades.Programa;
+
 /**
  *
  * @author TOSHIBAP55W
@@ -14,11 +29,28 @@ public class VentanaReporteEgresados extends javax.swing.JFrame {
     /**
      * Creates new form VentanaReporteEgresados
      */
+	private ControladorOfertaLaboral conOfer;
+	private ControladorEgresado conEgre;
+	private ControladorPrograma conProg;
+	
     public VentanaReporteEgresados() {
         initComponents();
         this.setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
          this.setResizable(false);
+         conOfer = new ControladorOfertaLaboral();
+         conEgre = new ControladorEgresado();
+         conProg = new ControladorPrograma();
+         
+         try {
+         
+        reporteEgresadosOcupacion();
+        cargarComboProgramas();
+        
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     /**
@@ -32,10 +64,9 @@ public class VentanaReporteEgresados extends javax.swing.JFrame {
 
         jLTitulo1 = new javax.swing.JLabel();
         jLTitulo2 = new javax.swing.JLabel();
-        jCBSituacionReporte = new javax.swing.JComboBox();
         jBInicio = new javax.swing.JButton();
-        jBBuscar = new javax.swing.JButton();
         jPanelDatos = new javax.swing.JPanel();
+        jCBPrograma = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -49,15 +80,13 @@ public class VentanaReporteEgresados extends javax.swing.JFrame {
 
         jLTitulo1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLTitulo1.setForeground(new java.awt.Color(255, 255, 255));
-        jLTitulo1.setText("Egresados por situacion actual:");
-        getContentPane().add(jLTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
+        jLTitulo1.setText("Reporte por programa:");
+        getContentPane().add(jLTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, -1));
 
         jLTitulo2.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         jLTitulo2.setForeground(new java.awt.Color(255, 255, 255));
         jLTitulo2.setText("REPORTE DE EGRESADOS");
-        getContentPane().add(jLTitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
-
-        getContentPane().add(jCBSituacionReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 320, 40));
+        getContentPane().add(jLTitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
 
         jBInicio.setBackground(new java.awt.Color(255, 255, 255));
         jBInicio.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -70,12 +99,19 @@ public class VentanaReporteEgresados extends javax.swing.JFrame {
         });
         getContentPane().add(jBInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, 140, 60));
 
-        jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono-Buscar.png"))); // NOI18N
-        getContentPane().add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 120, 90, 60));
-
         jPanelDatos.setBackground(new java.awt.Color(255, 255, 255));
         jPanelDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 1000, 440));
+
+        jCBPrograma.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jCBPrograma.setForeground(new java.awt.Color(255, 0, 0));
+        jCBPrograma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione Programa academico" }));
+        jCBPrograma.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBProgramaItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(jCBPrograma, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 320, 40));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 690));
@@ -83,6 +119,15 @@ public class VentanaReporteEgresados extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBInicio;
+    private javax.swing.JComboBox jCBPrograma;
+    private javax.swing.JLabel jLTitulo1;
+    private javax.swing.JLabel jLTitulo2;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JPanel jPanelDatos;
+    // End of variables declaration//GEN-END:variables
+    
     private void jBInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInicioActionPerformed
         VentanaPrincipal principal = new VentanaPrincipal(3);
         principal.setVisible(true);
@@ -96,14 +141,116 @@ public class VentanaReporteEgresados extends javax.swing.JFrame {
        
     }//GEN-LAST:event_formWindowClosing
 
-    
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBBuscar;
-    private javax.swing.JButton jBInicio;
-    private javax.swing.JComboBox jCBSituacionReporte;
-    private javax.swing.JLabel jLTitulo1;
-    private javax.swing.JLabel jLTitulo2;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JPanel jPanelDatos;
-    // End of variables declaration//GEN-END:variables
+    private void jCBProgramaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBProgramaItemStateChanged
+        if(jCBPrograma.getSelectedIndex()>0){
+        	
+        	ChartPanel panel;
+    		try {
+    			Programa programa = (Programa)jCBPrograma.getSelectedItem();
+    			List<InfoLaboralEgresado> listaInfoLab = conEgre.listarInfoporPrograma(programa);
+    			
+    			jPanelDatos.removeAll();
+    			
+    			double empleado = 0;
+    			double desempleado = 0;
+    			double independiente = 0;
+
+    			int contadorEmpleado = 0;
+    			int contadordDesempleado = 0;
+    			int contadorIndependiente = 0;
+
+    			for (int i = 0; i < listaInfoLab.size(); i++) {
+    				if (listaInfoLab.get(i).getSituacionActual().name().equals("EMPLEADO")) {
+    					contadorEmpleado++;
+    				} else if (listaInfoLab.get(i).getSituacionActual().name().equals("DESEMPLEADO")) {
+    					contadordDesempleado++;
+    				} else if (listaInfoLab.get(i).getSituacionActual().name().equals("INDEPENDIENTE")) {
+    					contadorIndependiente++;
+    				}
+    				
+    				empleado = (contadorEmpleado * 100) / listaInfoLab.size();
+    				desempleado = (contadordDesempleado * 100) / listaInfoLab.size();
+    				independiente = (contadorIndependiente * 100) / listaInfoLab.size();
+    				
+    			}
+    			DefaultPieDataset ds = new DefaultPieDataset();
+    			ds.setValue("Empleado: " + empleado + "%", empleado);
+    			ds.setValue("Desempleado: " + desempleado + "%", desempleado);
+    			ds.setValue("Independiente: " + independiente + "%", independiente);
+
+    			JFreeChart jf = ChartFactory.createPieChart3D("Reporte de egresados por tipo de ocupación", ds, true, true,
+    					true);
+
+    			panel = new ChartPanel(jf);
+    			panel.setBounds(160, 50, 720, 350);
+
+    			jPanelDatos.add(panel);
+
+    		} catch (Exception e) {
+    			// TODO: handle exception
+    		}
+
+        	
+        }else if(jCBPrograma.getSelectedIndex()==0){
+        	reporteEgresadosOcupacion();
+        }
+    }//GEN-LAST:event_jCBProgramaItemStateChanged
+
+    /**
+     * Grafica de pastel
+     */
+	public void reporteEgresadosOcupacion() {
+		ChartPanel panel;
+		try {
+			List<InfoLaboralEgresado> listaInfoLab = conEgre.listarInformacionLaboral();
+			
+			jPanelDatos.removeAll();
+			
+			double empleado = 0;
+			double desempleado = 0;
+			double independiente = 0;
+
+			int contadorEmpleado = 0;
+			int contadordDesempleado = 0;
+			int contadorIndependiente = 0;
+
+			for (int i = 0; i < listaInfoLab.size(); i++) {
+				if (listaInfoLab.get(i).getSituacionActual().name().equals("EMPLEADO")) {
+					contadorEmpleado++;
+				} else if (listaInfoLab.get(i).getSituacionActual().name().equals("DESEMPLEADO")) {
+					contadordDesempleado++;
+				} else if (listaInfoLab.get(i).getSituacionActual().name().equals("INDEPENDIENTE")) {
+					contadorIndependiente++;
+				}
+				
+				empleado = (contadorEmpleado * 100) / listaInfoLab.size();
+				desempleado = (contadordDesempleado * 100) / listaInfoLab.size();
+				independiente = (contadorIndependiente * 100) / listaInfoLab.size();
+				
+			}
+			DefaultPieDataset ds = new DefaultPieDataset();
+			ds.setValue("Empleado: " + empleado + "%", empleado);
+			ds.setValue("Desempleado: " + desempleado + "%", desempleado);
+			ds.setValue("Independiente: " + independiente + "%", independiente);
+
+			JFreeChart jf = ChartFactory.createPieChart3D("Reporte de egresados por tipo de ocupación", ds, true, true,
+					true);
+
+			panel = new ChartPanel(jf);
+			panel.setBounds(160, 50, 720, 350);
+
+			jPanelDatos.add(panel);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
+	
+	public void cargarComboProgramas()throws Exception{
+    	List<Programa>lista= conProg.listarProgramas();
+    	for (Programa programa : lista) {
+    		jCBPrograma.addItem(programa);
+		}
+    }
 }

@@ -53,6 +53,7 @@ public class VentanaEmpresa extends javax.swing.JFrame {
 				cargarDepartamentos();
 				cargarCiudades();
 				jBEditarmpresa.setEnabled(false);
+				jCBCiudad.setEnabled(false);
     		}
     	}else{
     		initComponents();
@@ -67,6 +68,7 @@ public class VentanaEmpresa extends javax.swing.JFrame {
 			cargarDepartamentos();
 			cargarCiudades();
 			jTFNit.enable(false);
+			jCBCiudad.setEnabled(false);
 			jBRegistrarEmpresa.setEnabled(false);
 			
 			/*Datos Empresa*/
@@ -209,7 +211,13 @@ public class VentanaEmpresa extends javax.swing.JFrame {
         jLabel4.setText("Nombre de empresa:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
 
-        jPanel1.add(jCBDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, 250, 33));
+        jCBDepartamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione Departamento" }));
+        jCBDepartamento.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBDepartamentoItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(jCBDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 250, 33));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -238,14 +246,15 @@ public class VentanaEmpresa extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Ciudad:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, -1, -1));
 
-        jPanel1.add(jCBCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 250, 33));
+        jCBCiudad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione Ciudad" }));
+        jPanel1.add(jCBCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 250, 33));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Departamento:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, -1, -1));
 
         jPanel1.add(jCBTipoEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 290, 33));
 
@@ -617,6 +626,24 @@ public class VentanaEmpresa extends javax.swing.JFrame {
     			}
     }//GEN-LAST:event_jBEditarmpresaActionPerformed
 
+    private void jCBDepartamentoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBDepartamentoItemStateChanged
+    	try {
+    			
+    	jCBCiudad.setEnabled(true);	
+    	jCBCiudad.removeAllItems();
+    	Departamento departamento = (Departamento)jCBDepartamento.getSelectedItem();
+        List<Ciudad> ciudades = conEmp.listarCiudadesPorDepartamento(departamento);
+			for (Ciudad ciudad : ciudades) {
+				jCBCiudad.addItem(ciudad);
+			}
+    	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+    }//GEN-LAST:event_jCBDepartamentoItemStateChanged
+
 
    
 
@@ -641,7 +668,6 @@ public class VentanaEmpresa extends javax.swing.JFrame {
 	
 	public void cargarCiudades() throws Exception{
 		
-		jCBCiudad.removeAllItems();
 		List<Ciudad> lista = conEmp.listarCiudades();
 		for (int i = 0; i < lista.size(); i++) {
 			jCBCiudad.addItem(lista.get(i));
@@ -650,7 +676,6 @@ public class VentanaEmpresa extends javax.swing.JFrame {
 	
 	public void cargarDepartamentos() throws Exception{
 		
-		jCBDepartamento.removeAllItems();
 		List<Departamento> lista = conEmp.listarDepartamentos();
 		for (int i = 0; i < lista.size(); i++) {
 			jCBDepartamento.addItem(lista.get(i));

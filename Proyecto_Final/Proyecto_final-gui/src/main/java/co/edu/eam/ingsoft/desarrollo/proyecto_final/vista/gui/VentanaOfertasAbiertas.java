@@ -7,12 +7,19 @@ package co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.gui;
 
 import java.util.List;
 
+import javax.swing.JPanel;
+
+import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorOfertaLaboral;
+import co.edu.eam.ingsoft.desarrollo.proyecto_final.vista.controladores.ControladorPrograma;
 import co.edu.ingesoft.proyecto.persistencia.entidades.AreaInteres;
 import co.edu.ingesoft.proyecto.persistencia.entidades.OfertaLaboral;
+import co.edu.ingesoft.proyecto.persistencia.entidades.Programa;
 import javassist.bytecode.stackmap.BasicBlock.Catch;
 
 /**
@@ -26,6 +33,7 @@ public class VentanaOfertasAbiertas extends javax.swing.JFrame {
      */
 	
 	private ControladorOfertaLaboral conOfer;
+	private ControladorPrograma conProg;
 	
     public VentanaOfertasAbiertas() {
         initComponents();
@@ -33,6 +41,14 @@ public class VentanaOfertasAbiertas extends javax.swing.JFrame {
            setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
             this.setResizable(false);
             conOfer =  new ControladorOfertaLaboral();
+            conProg = new ControladorPrograma();
+            cargarEstadistica();
+            try {
+				cargarComboProgramas();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
     }
 
     /**
@@ -48,7 +64,6 @@ public class VentanaOfertasAbiertas extends javax.swing.JFrame {
         jBInicio = new javax.swing.JButton();
         jLTitulo1 = new javax.swing.JLabel();
         jCBProgramaAcademico = new javax.swing.JComboBox();
-        jBBuscar = new javax.swing.JButton();
         jPanelDatos = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
 
@@ -80,12 +95,17 @@ public class VentanaOfertasAbiertas extends javax.swing.JFrame {
         jLTitulo1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLTitulo1.setForeground(new java.awt.Color(255, 255, 255));
         jLTitulo1.setText("Programa Academico:");
-        getContentPane().add(jLTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, -1, -1));
+        getContentPane().add(jLTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, -1, -1));
 
-        getContentPane().add(jCBProgramaAcademico, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, 320, 40));
-
-        jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono-Buscar.png"))); // NOI18N
-        getContentPane().add(jBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 130, 90, 60));
+        jCBProgramaAcademico.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jCBProgramaAcademico.setForeground(new java.awt.Color(255, 0, 51));
+        jCBProgramaAcademico.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione Programa" }));
+        jCBProgramaAcademico.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBProgramaAcademicoItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(jCBProgramaAcademico, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 320, 40));
 
         jPanelDatos.setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jPanelDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 980, 480));
@@ -97,7 +117,6 @@ public class VentanaOfertasAbiertas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBInicio;
     private javax.swing.JComboBox jCBProgramaAcademico;
     private javax.swing.JLabel jLTitulo1;
@@ -120,30 +139,97 @@ public class VentanaOfertasAbiertas extends javax.swing.JFrame {
        
     }//GEN-LAST:event_formWindowClosing
 
+
+
    private void cargarEstadistica(){
     
     ChartPanel panel;
     
     try{
     	List<OfertaLaboral>listaOfertas = conOfer.listarOfertas();
-    	
+    	jPanelDatos.removeAll();
     	int contador=0;
     	AreaInteres areaAnterior = null;
     	DefaultCategoryDataset ds = new DefaultCategoryDataset();
     	
     	for (int i = 0; i < listaOfertas.size(); i++) {
 			
-    		if(listaOfertas.get(i).isCierreOferta()== false){
+    		if(listaOfertas.get(i).isCierreOferta()== true){
     			areaAnterior = listaOfertas.get(i).getIdArea();
     			for (int j = 0; j < listaOfertas.size(); j++) {
-					
+					if(listaOfertas.get(j).getIdArea()==areaAnterior){
+						contador++;
+						
+					}
 				}
+    			ds.addValue(contador, listaOfertas.get(i).getIdArea().getNombreArea(), listaOfertas.get(i).getIdArea().getNombreArea());
+    			contador=0;
     		}
 		}
+    	
+    	JFreeChart jf = ChartFactory.createBarChart3D("Reporte Ofertas Abiertas", "Nombre de las Ofertas",
+    			"Numero de vacantes", ds,PlotOrientation.VERTICAL,true,true,true);
+    	panel = new ChartPanel(jf);
+    	panel.setBounds(140, 20, 700, 460);
+    	jPanelDatos.add(panel);
     	
     }catch (Exception e){
     	e.getMessage();
     }
    }
+   
+   private void jCBProgramaAcademicoItemStateChanged(java.awt.event.ItemEvent evt) {                                                      
+	    
+	   if(jCBProgramaAcademico.getSelectedIndex()>0){
+		   
+	   
+	   Programa programa= (Programa)jCBProgramaAcademico.getSelectedItem();
+	    
+	     ChartPanel panel;
+	     jPanelDatos.removeAll();
+	     
+		    try{
+		    	List<OfertaLaboral>listaOfertas = conOfer.buscarOfertaPorPrograma(programa);
+		    	int contador=0;
+		    	AreaInteres areaAnterior = null;
+		    	DefaultCategoryDataset ds = new DefaultCategoryDataset();
+		    	
+		    	for (int i = 0; i < listaOfertas.size(); i++) {
+					
+		    		if(listaOfertas.get(i).isCierreOferta()== false){
+		    			areaAnterior = listaOfertas.get(i).getIdArea();
+		    			for (int j = 0; j < listaOfertas.size(); j++) {
+							if(listaOfertas.get(j).getIdArea()== areaAnterior){
+								contador++;
+								
+							}
+						}
+		    			ds.addValue(contador, listaOfertas.get(i).getIdArea().getNombreArea(), listaOfertas.get(i).getIdArea().getNombreArea());
+		    			contador=0;
+		    		}
+				}
+		    	
+		    	JFreeChart jf = ChartFactory.createBarChart3D("Reporte Ofertas Abiertas", "Nombre de las Ofertas",
+		    			"Numero de vacantes", ds,PlotOrientation.VERTICAL,true,true,true);
+		    	panel = new ChartPanel(jf);
+		    	panel.setBounds(140, 20, 700, 460);
+		    	jPanelDatos.add(panel);
+		    	
+		    }catch (Exception e){
+		    	e.getMessage();
+		    }
+	   }else if(jCBProgramaAcademico.getSelectedIndex()==0){
+		   cargarEstadistica();
+	   }
+   }
  
+
+   public void cargarComboProgramas()throws Exception{
+   
+	   List<Programa>lista= conProg.listarProgramas();
+   		for (Programa programa : lista) {
+   		jCBProgramaAcademico.addItem(programa);
+		}
+   }
+	 
 }

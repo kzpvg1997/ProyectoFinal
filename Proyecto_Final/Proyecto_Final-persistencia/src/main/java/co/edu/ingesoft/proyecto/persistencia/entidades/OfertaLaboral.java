@@ -39,6 +39,7 @@ public class OfertaLaboral implements Serializable{
 	
 	public static final String OFERTAS_POR_PROGRAMA = "OfertaLaboral.ofertasporprograma";
 	
+	
 	@Id
 	@Column(name="id_oferta")
 	private int idOferta;

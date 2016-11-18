@@ -13,6 +13,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,10 +27,20 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoEmpresa
  * @author TOSHIBAP55W
  */
 
-
+@NamedQueries({
+	@NamedQuery(name=InfoLaboralEgresado.LISTAR_INFO_LABORAL,
+			query="SELECT ifl FROM InfoLaboralEgresado ifl "),
+	
+	@NamedQuery(name=InfoLaboralEgresado.LISTAR_INFO_POR_PROGRAMA,
+		query="SELECT ifl FROM InfoLaboralEgresado ifl WHERE ifl.programa=?1 ")
+})
 @Entity
 @Table(name="tb_info_laboral")
 public class InfoLaboralEgresado implements Serializable{
+	
+	public static final String LISTAR_INFO_LABORAL = "InfoLaboralEgresado.informaciones";
+	
+	public static final String LISTAR_INFO_POR_PROGRAMA = "InfoLaboralEgresado.informacionesporprograma";
 	
 	@Id
 	@OneToOne

@@ -12,7 +12,6 @@ import co.edu.ingesoft.proyecto.persistencia.definiciones.IDAOEmpresa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Ciudad;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Departamento;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Empresa;
-import co.edu.ingesoft.proyecto.persistencia.entidades.Facultad;
 import co.edu.ingesoft.proyecto.persistencia.entidades.InfoLaboralEgresado;
 import co.edu.ingesoft.proyecto.persistencia.entidades.SectorEmpresa;
 import co.edu.ingesoft.proyecto.persistencia.utilidades.AdministradorEntityManager;
@@ -132,5 +131,18 @@ public class DAOEmpresa implements IDAOEmpresa{
 		q.setParameter(1, empresa);
 		List<InfoLaboralEgresado> egresados = q.getResultList();
 		return egresados;
+	}
+	/**
+	 * Metodo encargado de listar las ciudades por departamento
+	 * @param departamento el departamento contenedor de las ciudades
+	 * @return lista de ciudades
+	 * @throws Exception en caso de que no existan ciudades
+	 */
+	public List<Ciudad> listarCiudadesPorDepartamento(Departamento departamento) throws Exception {
+		EntityManager em = AdministradorEntityManager.getEntityManager();
+		Query q = em.createNamedQuery(Empresa.CIUDADES_POR_DEPARTAMENTO);
+		q.setParameter(1, departamento);
+		List<Ciudad> ciudades = q.getResultList();
+		return ciudades;
 	}
 }

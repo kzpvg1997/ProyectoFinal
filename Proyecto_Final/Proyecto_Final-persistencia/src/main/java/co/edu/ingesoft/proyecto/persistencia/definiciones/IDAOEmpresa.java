@@ -82,5 +82,12 @@ public interface IDAOEmpresa {
 	 * @throws Exception en caso de que no exista
 	 */
 	public SectorEmpresa buscarSectorEmpresa(int id)throws Exception;
+	/**
+	 * Metodo encargado de listar las ciudades por departamento
+	 * @param departamento el departamento contenedor de las ciudades
+	 * @return lista de ciudades
+	 * @throws Exception en caso de que no existan ciudades
+	 */
+	public List<Ciudad> listarCiudadesPorDepartamento (Departamento departamento)throws Exception;
 	
 }

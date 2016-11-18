@@ -80,4 +80,14 @@ public class ControladorEmpresa {
 	public List<InfoLaboralEgresado> listarEgresadosEmpresa(Empresa empresa) throws Exception {
 		return boEmp.listarEgresadosEmpresa(empresa);
 	}
+	
+	/**
+	 * Metodo encargado de listar las ciudades por departamento
+	 * @param departamento el departamento contenedor de las ciudades
+	 * @return lista de ciudades
+	 * @throws Exception en caso de que no existan ciudades
+	 */
+	public List<Ciudad> listarCiudadesPorDepartamento(Departamento departamento) throws Exception {
+		return boEmp.listarCiudadesPorDepartamento(departamento);
+	}
 }

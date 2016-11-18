@@ -32,7 +32,10 @@ import co.edu.ingesoft.proyecto.persistencia.entidades.enumeraciones.TipoEmpresa
 	query="SELECT emp FROM Empresa emp"),
 	
 	 @NamedQuery(name=Empresa.EMPLEADOS_POR_EMPRESA,
-		query="SELECT inf FROM InfoLaboralEgresado inf WHERE inf.idEmpresa=?1")
+		query="SELECT inf FROM InfoLaboralEgresado inf WHERE inf.idEmpresa=?1"),
+	
+	 @NamedQuery(name=Empresa.CIUDADES_POR_DEPARTAMENTO,
+		query="SELECT ci FROM Ciudad ci WHERE ci.idDepartamento=?1")
 
 	})
 
@@ -56,6 +59,8 @@ public class Empresa implements Serializable{
 	 * @param idEmpresa el nit de la empresa que tiene los empledos
 	 */
 	public static final String EMPLEADOS_POR_EMPRESA = "Empresa.empleadosEmpresa";
+	
+	public static final String CIUDADES_POR_DEPARTAMENTO = "Empresa.ciudadesEmpresa";
 	
 	@Id
 	@Column(name="id_empresa")

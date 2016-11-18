@@ -3,13 +3,16 @@
  */
 package co.edu.ingesoft.proyecto.persistencia.implementacion.jpa;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import co.edu.ingesoft.proyecto.persistencia.definiciones.IDAOEgresado;
 import co.edu.ingesoft.proyecto.persistencia.entidades.Egresado;
-import co.edu.ingesoft.proyecto.persistencia.entidades.HistorialLaboral;
-import co.edu.ingesoft.proyecto.persistencia.entidades.HistorialLaboralPK;
+import co.edu.ingesoft.proyecto.persistencia.entidades.Empresa;
 import co.edu.ingesoft.proyecto.persistencia.entidades.InfoLaboralEgresado;
+import co.edu.ingesoft.proyecto.persistencia.entidades.Programa;
 import co.edu.ingesoft.proyecto.persistencia.utilidades.AdministradorEntityManager;
 
 /**
@@ -85,7 +88,28 @@ public class DAOEgresado implements IDAOEgresado{
 		em.merge(info);
 		em.getTransaction().commit();
 	}
-
-	
-
+	/**
+	 *  Metodo encargado de listar la informacion laboral
+	 * @return la informacion laboral de u  egresado
+	 * @throws Exception en caso de que no exista informacion laboral
+	 */
+	public List<InfoLaboralEgresado> listarInformacionLaboral() throws Exception {
+		EntityManager em = AdministradorEntityManager.getEntityManager();
+		Query q = em.createNamedQuery(InfoLaboralEgresado.LISTAR_INFO_LABORAL);
+		List<InfoLaboralEgresado> informaciones = q.getResultList();
+		return informaciones;
+	}
+	/**
+	 * Lista la informacion Laboral de un egresado por Programa academico
+	 * @param programa el programa a la cula se le desea saber la lista
+	 * @return lista de informacion
+	 * @throws Exception en caso de que no exista informacion
+	 */
+	public List<InfoLaboralEgresado> listarInfoporPrograma(Programa programa) throws Exception {
+		EntityManager em = AdministradorEntityManager.getEntityManager();
+		Query q = em.createNamedQuery(InfoLaboralEgresado.LISTAR_INFO_POR_PROGRAMA);
+		q.setParameter(1, programa);
+		List<InfoLaboralEgresado> informaciones = q.getResultList();
+		return informaciones;
+	}
 }

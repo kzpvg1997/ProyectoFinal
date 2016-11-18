@@ -193,15 +193,20 @@
             <Component class="javax.swing.JComboBox" name="jCBDepartamento">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
+                  <StringArray count="1">
+                    <StringItem index="0" value="Seleccione Departamento"/>
+                  </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jCBDepartamentoItemStateChanged"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="390" y="380" width="250" height="33"/>
+                  <AbsoluteConstraints x="410" y="280" width="250" height="33"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -309,14 +314,16 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="480" y="240" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="500" y="340" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JComboBox" name="jCBCiudad">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
+                  <StringArray count="1">
+                    <StringItem index="0" value="Seleccione Ciudad"/>
+                  </StringArray>
                 </Property>
               </Properties>
               <AuxValues>
@@ -324,7 +331,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="390" y="280" width="250" height="33"/>
+                  <AbsoluteConstraints x="410" y="380" width="250" height="33"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -340,7 +347,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="450" y="340" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="470" y="240" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
